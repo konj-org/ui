@@ -1,0 +1,26 @@
+{
+  "name": "ui",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/preact": "^3.0.0",
+    "@astrojs/react": "^3.0.2",
+    "@astrojs/solid-js": "^3.0.1",
+    "@astrojs/tailwind": "^5.0.0",
+    "@types/react": "^18.0.21",
+    "@types/react-dom": "^18.0.6",
+    "astro": "^3.1.0",
+    "preact": "^10.6.5",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "solid-js": "^1.4.3",
+    "tailwindcss": "^3.0.24"
+  }
+}
