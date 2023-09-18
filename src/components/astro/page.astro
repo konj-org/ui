@@ -1,0 +1,12 @@
+---
+import type { HTMLAttributes } from "astro/types";
+interface Props extends HTMLAttributes<"body"> {}
+
+import Headers from "@/components/astro/headers.astro";
+---
+<html data-color-scheme="dark" lang="en" dir="ltr">
+	<Headers />
+	<body {...Astro.props}>
+		<slot />
+	</body>
+</html>
