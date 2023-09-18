@@ -2,7 +2,6 @@ import { defineConfig } from "astro/config";
 
 import react from "@astrojs/react";
 import preact from "@astrojs/preact";
-import solidJs from "@astrojs/solid-js";
 
 import tailwind from "@astrojs/tailwind";
 
@@ -14,9 +13,6 @@ export default defineConfig({
     }),
     preact({
       include: ["**/preact/*"],
-    }),
-    solidJs({
-      include: ["**/solid/*"],
     }),
     tailwind(),
   ],
