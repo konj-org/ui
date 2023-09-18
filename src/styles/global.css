@@ -1,0 +1,44 @@
+*,
+*::after,
+*::before {
+  -webkit-tap-highlight-color: transparent;
+  @apply accent-primary-500/60 dark:accent-primary-300/60 outline-primary-500/60 dark:outline-primary-300/60;
+}
+body {
+  @apply bg-neutral-50 dark:bg-neutral-950 text-neutral-950 dark:text-neutral-50;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+  }
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    color-scheme: light;
+  }
+}
+
+html[data-modal-open="true"] * {
+  touch-action: none;
+}
+html[data-modal-open="true"]
+  [data-dialog-open="true"]
+  [data-scrollable="true"]
+  * {
+  touch-action: auto;
+}
+
+pre,
+pre code {
+  @apply !bg-neutral-900;
+}
+
+pre {
+  @apply rounded-3xl;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  @apply appearance-none m-0;
+}
