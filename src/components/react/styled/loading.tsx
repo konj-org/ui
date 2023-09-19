@@ -6,7 +6,7 @@ interface LoadingProps
     ComponentPropsWithRef<"svg">,
     "children" | "viewBox" | "fill" | "xmlns"
   > {
-  stokeWidth?: number;
+  strokeWidth?: number;
 }
 
 const calcStyle = ({ index }: { index: number }): CSSProperties => {
@@ -24,7 +24,7 @@ const calcStyle = ({ index }: { index: number }): CSSProperties => {
 
 export const Loading = ({
   className = "",
-  stokeWidth = 1.75,
+  strokeWidth = 1.75,
   ...props
 }: LoadingProps) => {
   return (
@@ -46,7 +46,7 @@ export const Loading = ({
       <path
         d="M6.17156 6.02159L9 8.88037"
         stroke="currentColor"
-        strokeWidth={stokeWidth}
+        strokeWidth={strokeWidth}
         strokeLinecap="round"
         strokeLinejoin="round"
         className="animate-loading"
@@ -55,7 +55,7 @@ export const Loading = ({
       <path
         d="M4 11.9141L8 11.9141"
         stroke="currentColor"
-        strokeWidth={stokeWidth}
+        strokeWidth={strokeWidth}
         strokeLinecap="round"
         strokeLinejoin="round"
         className="animate-loading"
@@ -64,7 +64,7 @@ export const Loading = ({
       <path
         d="M6.17151 17.8052L8.99994 14.9464"
         stroke="currentColor"
-        strokeWidth={stokeWidth}
+        strokeWidth={strokeWidth}
         strokeLinecap="round"
         strokeLinejoin="round"
         className="animate-loading"
@@ -73,7 +73,7 @@ export const Loading = ({
       <path
         d="M12 20V15.957"
         stroke="currentColor"
-        strokeWidth={stokeWidth}
+        strokeWidth={strokeWidth}
         strokeLinecap="round"
         strokeLinejoin="round"
         className="animate-loading"
@@ -82,7 +82,7 @@ export const Loading = ({
       <path
         d="M17.8284 17.8051L15 14.9463"
         stroke="currentColor"
-        strokeWidth={stokeWidth}
+        strokeWidth={strokeWidth}
         strokeLinecap="round"
         strokeLinejoin="round"
         className="animate-loading"
@@ -91,7 +91,7 @@ export const Loading = ({
       <path
         d="M20 11.9141H16"
         stroke="currentColor"
-        strokeWidth={stokeWidth}
+        strokeWidth={strokeWidth}
         strokeLinecap="round"
         strokeLinejoin="round"
         className="animate-loading"
@@ -100,7 +100,7 @@ export const Loading = ({
       <path
         d="M17.8285 6.02148L15.0001 8.88026"
         stroke="currentColor"
-        strokeWidth={stokeWidth}
+        strokeWidth={strokeWidth}
         strokeLinecap="round"
         strokeLinejoin="round"
         className="animate-loading"
@@ -109,7 +109,7 @@ export const Loading = ({
       <path
         d="M12 4V8.04294"
         stroke="currentColor"
-        strokeWidth={stokeWidth}
+        strokeWidth={strokeWidth}
         strokeLinecap="round"
         strokeLinejoin="round"
         className="animate-loading"
