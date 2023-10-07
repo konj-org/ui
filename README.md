@@ -26,13 +26,15 @@ This project is inspired by the [shadcn/ui](https://github.com/shadcn/ui) and ma
 
 ### Primitive
 
-| Component          | React | Preact |
-| ------------------ | ----- | ------ |
-| Default Components | [ ]   | [x]    |
+| Component          | React              | Preact             |
+| ------------------ | ------------------ | ------------------ |
+| Default Components | -                  | :heavy_check_mark: |
+| Dialog             | :heavy_check_mark: | :heavy_check_mark: |
 
 ### Styled
 
-| Component | React | Preact |
-| --------- | ----- | ------ |
-| Loading   | [x]   | [x]    |
-| Button    | [x]   | [x]    |
+| Component    | React              | Preact             |
+| ------------ | ------------------ | ------------------ |
+| Loading      | :heavy_check_mark: | :heavy_check_mark: |
+| Button       | :heavy_check_mark: | :heavy_check_mark: |
+| Alert Dialog | :heavy_check_mark: | :heavy_check_mark: |
