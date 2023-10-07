@@ -8,11 +8,13 @@ import tailwind from "@astrojs/tailwind";
 // https://astro.build/config
 export default defineConfig({
   integrations: [
-    react({
-      include: ["**/react/*"],
-    }),
     preact({
       include: ["**/preact/*"],
+      exclude: ["**/react/*"],
+    }),
+    react({
+      include: ["**/react/*"],
+      exclude: ["**/preact/*"],
     }),
     tailwind(),
   ],
