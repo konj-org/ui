@@ -38,3 +38,9 @@ This project is inspired by the [shadcn/ui](https://github.com/shadcn/ui) and ma
 | Loading      | :heavy_check_mark: | :heavy_check_mark: |
 | Button       | :heavy_check_mark: | :heavy_check_mark: |
 | Alert Dialog | :heavy_check_mark: | :heavy_check_mark: |
+
+### Hooks
+
+| Component             | React              | Preact             |
+| --------------------- | ------------------ | ------------------ |
+| use-touch-dialog-drag | :heavy_check_mark: | :heavy_check_mark: |
