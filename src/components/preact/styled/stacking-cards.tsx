@@ -1,7 +1,7 @@
 /** @jsxImportSource preact */
 
 // Types
-import type { ComponentProps, VNode } from "preact";
+import type { ComponentProps, VNode, JSX } from "preact";
 
 // Preact
 import {
@@ -17,39 +17,132 @@ import { useMemo } from "preact/hooks";
 // Tw Merge
 import { twMerge } from "tailwind-merge";
 
-// Stacking Card
+// -------------------------------------------------------- //
+// ---- Constants ----------------------------------------- //
+// -------------------------------------------------------- //
 
-interface StackingCardProps extends ComponentProps<"button"> {
+const translateXClampedBy = 20;
+
+// -------------------------------------------------------- //
+// ---- Stacking Card ------------------------------------- //
+// -------------------------------------------------------- //
+
+interface StackingCardProps extends ComponentProps<"div"> {
   key: string;
   index?: number;
   reverseIndex?: number;
   onSelect?: () => void;
+  onMoveTo?: (to: number) => void;
   mode?: "stacked" | "expanded";
+  nextIndex?: number;
 }
 
 /** `StackingCard` should be used as the children of `StackingCards` */
 export const StackingCard = ({
+  nextIndex,
   onSelect,
   className = "",
+  style = "",
   children,
   mode,
   index,
   reverseIndex,
+  onMoveTo,
   ...props
 }: StackingCardProps) => {
+  const deltaRef = useRef<null | number>(null);
+  const cardRef = useRef<null | HTMLDivElement>(null);
+  const startingX = useRef<null | number>(null);
+
+  const onTouchStart = useCallback<JSX.TouchEventHandler<HTMLDivElement>>(
+    (e) => {
+      if (e.touches[0]) startingX.current = e.touches[0].clientX;
+    },
+    [index]
+  );
+
+  /** Checks if the cards needs to be closed and cleans up the refs */
+  const onTouchEnd = useCallback<JSX.TouchEventHandler<HTMLDivElement>>(
+    (e) => {
+      cardRef.current?.style.removeProperty("transition-duration");
+      setTimeout(() => {
+        cardRef.current?.style.setProperty("--translate-x", "0px");
+
+        /** The amount that is needed for card to be closed */
+        const clampingPercentageToClose = 0.5;
+        if (
+          deltaRef.current !== null &&
+          (deltaRef.current > translateXClampedBy * clampingPercentageToClose ||
+            deltaRef.current < -translateXClampedBy * clampingPercentageToClose)
+        ) {
+          onTouchEnd(e);
+          onMoveTo && onMoveTo(nextIndex!);
+        }
+
+        deltaRef.current = null;
+        startingX.current = null;
+      }, 0);
+    },
+    [nextIndex]
+  );
+
+  /** Adds sliding interactivity to the card */
+  const onTouchMove = useCallback<JSX.TouchEventHandler<HTMLDivElement>>(
+    (e) => {
+      if (index !== 0) return;
+
+      // Validating the references
+      if (
+        startingX.current === null ||
+        typeof e.touches[0] === "undefined" ||
+        cardRef.current === null
+      )
+        return;
+
+      // Calculating the X translate
+      const { width } = (e.target as HTMLDivElement).getBoundingClientRect();
+      const delta = ((e.touches[0].clientX - startingX.current) / width) * 50;
+
+      // Clamping the X translate
+      const clampedDelta =
+        delta > translateXClampedBy
+          ? translateXClampedBy
+          : delta < -translateXClampedBy
+          ? -translateXClampedBy
+          : delta;
+
+      // Setting CSS variables
+      cardRef.current.style.setProperty("--translate-x", clampedDelta + "%");
+      cardRef.current.style.setProperty("transition-duration", "10ms");
+
+      // Storing the delta
+      deltaRef.current = clampedDelta;
+    },
+    [index, onTouchEnd, onMoveTo]
+  );
+
   return (
-    <button
-      style={`--index:${index};--reverse-index:${reverseIndex};--reduction:${(
-        index! * 0.05
-      ).toFixed(2)};`}
+    <div
+      ref={cardRef}
+      onTouchStart={onTouchStart}
+      onTouchEnd={onTouchEnd}
+      onTouchMove={onTouchMove}
+      style={
+        `--translate-x: 0px;` +
+        `--index: ${index};` +
+        `--reverse-index: ${reverseIndex};` +
+        `--reduction: ${(index! * 0.05).toFixed(2)};` +
+        style
+      }
       data-mode={mode}
       data-front-card={index === 0}
       onClick={onSelect}
       className={twMerge(
         [
+          "block",
           "w-full",
           "absolute",
-          "p-8",
+          "p-4",
           "rounded-3xl",
           "backdrop-blur-xl",
           "border",
@@ -59,18 +152,21 @@ export const StackingCard = ({
           "dark:border-neutral-900",
           "aspect-[var(--ratio)]",
           "overflow-hidden",
-          "transition-all",
+          "motion-safe:transition-all",
           "z-[var(--reverse-index)]",
+          "translate-x-[var(--translate-x)]",
           "origin-top",
           "cursor-default",
+          "duration-200",
+          "data-[front-card=true]:!touch-none",
           // stacked
           "data-[mode=stacked]:opacity-[calc(1_-_var(--reduction))]",
           "data-[mode=stacked]:scale-[calc(1_-_var(--reduction))]",
           "data-[mode=stacked]:translate-y-[calc(var(--reverse-index)_*_(var(--spacer)_-_(var(--reduction)*1rem)))]",
           // Hovering while stacked
-          "data-[mode=stacked]:data-[front-card=false]:hover:cursor-pointer",
-          "data-[mode=stacked]:hover:opacity-100",
-          "data-[front-card=false]:data-[mode=stacked]:hover:translate-y-[calc((var(--reverse-index)_-_1)_*_(var(--spacer)_-_(var(--reduction)*1rem)))]",
+          "md:data-[mode=stacked]:data-[front-card=false]:hover:cursor-pointer",
+          "md:data-[mode=stacked]:hover:opacity-100",
+          "md:data-[front-card=false]:data-[mode=stacked]:hover:translate-y-[calc((var(--reverse-index)_-_1)_*_(var(--spacer)_-_(var(--reduction)*1rem)))]",
           // Expanded
           "data-[mode=expanded]:translate-y-[calc(var(--index)_*_(var(--item-height)_+_.25rem))]",
         ].join(" "),
@@ -79,17 +175,20 @@ export const StackingCard = ({
       {...props}
     >
       {children}
-    </button>
+    </div>
   );
 };
 
-// Stacking Cards
+// -------------------------------------------------------- //
+// ---- Stacking Cards ------------------------------------ //
+// -------------------------------------------------------- //
 
 interface StackingCardsProps extends ComponentProps<"div"> {
   heightRatio?: number;
   widthRatio?: number;
   expandedLabel?: string;
   stackedLabel?: string;
+  showLessLabel?: string;
   title: string;
 }
 
@@ -101,6 +200,7 @@ export const StackingCards = ({
   widthRatio = 5,
   expandedLabel = "Expand",
   stackedLabel = "Stack",
+  showLessLabel = "Show Less",
   style = "",
   className = "",
   ...props
@@ -134,25 +234,35 @@ export const StackingCards = ({
   );
 
   // Actions
-  const onSelect = useCallback((itemIndex: number) => {
-    if (selectedIndexRef.current === itemIndex) return;
-    setMappedIndexes((mappedIndexes) => {
-      /** The current position of selected item */
-      let selectedItemValue = mappedIndexes[itemIndex]!;
+  const onSelect = useCallback(
+    (itemIndex: number, expandOnMobile = false) => {
+      if (selectedIndexRef.current === itemIndex || mode === "expanded") return;
 
-      return mappedIndexes.map((value, index) => {
-        // Incase the item is the selected item we need to move it to the front
-        if (index === itemIndex) return 0;
+      // Checking the screen width
+      const { matches: isDesktop } = window.matchMedia("(min-width: 768px)");
 
-        // Incase the item is in front of current item, it needs to be moved back
-        if (selectedItemValue >= value) return value + 1;
+      // Expanding the cards incase on mobile
+      if (!isDesktop && expandOnMobile) return setMode("expanded");
 
-        // In any other case item will remain at it's current place
-        return value;
+      setMappedIndexes((mappedIndexes) => {
+        /** The current position of selected item */
+        let selectedItemValue = mappedIndexes[itemIndex]!;
+
+        return mappedIndexes.map((value, index) => {
+          // Incase the item is the selected item we need to move it to the front
+          if (index === itemIndex) return 0;
+
+          // Incase the item is in front of current item, it needs to be moved back
+          if (selectedItemValue >= value) return value + 1;
+
+          // In any other case item will remain at it's current place
+          return value;
+        });
       });
-    });
-    selectedIndexRef.current = itemIndex;
-  }, []);
+      selectedIndexRef.current = itemIndex;
+    },
+    [mode]
+  );
 
   // Hydrates the component with the width of wrapper
   useEffect(() => {
@@ -169,11 +279,13 @@ export const StackingCards = ({
     };
   }, []);
 
+  /** Toggles the mode */
   const toggleState = useCallback(
     () => setMode((curr) => (curr === "expanded" ? "stacked" : "expanded")),
     []
   );
 
+  /** Amount of needed padding for the element */
   const paddingTop = useMemo(() => {
     const spacer = 2 * (heightRatio / widthRatio);
     let length = 0;
@@ -188,7 +300,10 @@ export const StackingCards = ({
   return (
     <div
       data-hydrated={hydrated}
-      className={"data-[hydrated=false]:pb-[var(--padding-top)] " + className}
+      className={twMerge(
+        ["my-4", "data-[hydrated=false]:pb-[var(--padding-top)]"].join(" "),
+        className as string
+      )}
       style={
         `--spacer:${2 * (heightRatio / widthRatio)}rem;` +
         `--padding-top:${paddingTop}rem;` +
@@ -202,10 +317,13 @@ export const StackingCards = ({
       {...props}
     >
       <div className="flex justify-between items-end content-end pb-4">
-        <p className="text-4xl font-semibold my-0">{title}</p>
+        <p className="text-2xl font-bold my-0 text-black dark:text-white">
+          {title}
+        </p>
         <button
+          data-mode={mode}
           onClick={toggleState}
-          class={[
+          className={[
             "flex",
             "gap-1",
             "px-5",
@@ -219,12 +337,20 @@ export const StackingCards = ({
             "active:bg-neutral-200",
             "active:dark:bg-neutral-800",
             "transition-colors",
+            "data-[mode=stacked]:opacity-0",
+            "data-[mode=stacked]:pointer-events-none",
+            "md:data-[mode=stacked]:opacity-100",
+            "md:data-[mode=stacked]:pointer-events-auto",
+            "[&_span[data-desktop-only]]:hidden",
+            "md:[&_span[data-desktop-only]]:block",
+            "md:[&_span[data-mobile-only]]:hidden",
           ].join(" ")}
         >
-          <span>
+          <span data-desktop-only>
             {mode !== "expanded" && expandedLabel}
             {mode !== "stacked" && stackedLabel}
           </span>
+          <span data-mobile-only>{showLessLabel}</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 -960 960 960"
@@ -246,7 +372,7 @@ export const StackingCards = ({
             "data-[hydrated=true]:data-[mode=stacked]:max-h-[calc(var(--padding-top)_+_var(--item-height))]",
             "data-[hydrated=true]:data-[mode=expanded]:max-h-[calc(var(--child-count)_*_(var(--item-height)_+_.25rem)_-_.25rem)]",
             "data-[hydrated=true]:h-[99999vh]",
-            "data-[hydrated=true]:transition-[max-height]",
+            "data-[hydrated=true]:motion-safe:transition-[max-height]",
             "w-full",
             "relative",
             "w-full",
@@ -256,10 +382,12 @@ export const StackingCards = ({
       >
         {Children.map(children, (child, index) =>
           cloneElement(child as VNode, {
+            nextIndex: index < mappedIndexes.length - 1 ? index + 1 : 0,
             index: mappedIndexes[index],
             mode,
             reverseIndex: mappedIndexes.length - 1 - mappedIndexes[index]!,
-            onSelect: onSelect.bind(null, index),
+            onSelect: onSelect.bind(null, index, true),
+            onMoveTo: onSelect,
           })
         )}
       </div>
