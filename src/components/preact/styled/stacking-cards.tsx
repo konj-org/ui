@@ -81,7 +81,7 @@ export const StackingCard = ({
 
         deltaRef.current = null;
         startingX.current = null;
-      }, 0);
+      }, 10);
     },
     [nextIndex]
   );
@@ -100,7 +100,7 @@ export const StackingCard = ({
         return;
 
       // Calculating the X translate
-      const { width } = (e.target as HTMLDivElement).getBoundingClientRect();
+      const { width } = cardRef.current.getBoundingClientRect();
       const delta = ((e.touches[0].clientX - startingX.current) / width) * 50;
 
       // Clamping the X translate
@@ -157,8 +157,10 @@ export const StackingCard = ({
           "translate-x-[var(--translate-x)]",
           "origin-top",
           "cursor-default",
-          "duration-200",
           "data-[front-card=true]:!touch-none",
+          "data-[front-card=true]:[&_*]:!touch-none",
+          "motion-safe:duration-300",
+          "motion-safe:ease-elastic",
           // stacked
           "data-[mode=stacked]:opacity-[calc(1_-_var(--reduction))]",
           "data-[mode=stacked]:scale-[calc(1_-_var(--reduction))]",
@@ -372,6 +374,7 @@ export const StackingCards = ({
             "data-[hydrated=true]:data-[mode=stacked]:max-h-[calc(var(--padding-top)_+_var(--item-height))]",
             "data-[hydrated=true]:data-[mode=expanded]:max-h-[calc(var(--child-count)_*_(var(--item-height)_+_.25rem)_-_.25rem)]",
             "data-[hydrated=true]:h-[99999vh]",
+            "data-[hydrated=true]:motion-safe:duration-300",
             "data-[hydrated=true]:motion-safe:transition-[max-height]",
             "w-full",
             "relative",
