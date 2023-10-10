@@ -353,15 +353,27 @@ export const StackingCards = ({
             {mode !== "stacked" && stackedLabel}
           </span>
           <span data-mobile-only>{showLessLabel}</span>
+          {/**
+            The following icon is provided by Heroicons
+            Github Repo: https://github.com/tailwindlabs/heroicons
+            License: MIT
+          */}
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 -960 960 960"
-            className="w-6 h-6 transition-transform data-[rotated=true]:rotate-180"
-            fill="currentColor"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={2}
+            stroke="currentColor"
+            className="w-5 h-5 transition-transform data-[rotated=true]:rotate-180"
             data-rotated={mode === "expanded"}
           >
-            <path d="M480-357q-6 0-11-2t-10-7L261-564q-9-9-9-21t9-21q9-9 21.5-9t21.5 9l176 176 176-176q9-9 21-9t21 9q9 9 9 21.5t-9 21.5L501-366q-5 5-10 7t-11 2Z" />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+            />
           </svg>
+          {/* END-OF Heroicons code */}
         </button>
       </div>
       <div
