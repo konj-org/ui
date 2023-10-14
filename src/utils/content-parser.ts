@@ -60,9 +60,13 @@ export const parseTS = ({ type, library, model, filename }: ParseTSXProps) =>
 
       const filetype = filename.slice(filename.indexOf(".") + 1);
 
-      if (!existsSync(path)) res(null);
+      if (!existsSync(path)) return res(null);
 
-      const file = readFileSync(path);
+      let file = readFileSync(path, "utf-8");
+
+      if (type === "component" && library === "preact") {
+        file = file.replace("/** @jsxImportSource preact */", "").trimStart();
+      }
 
       const wrappedFile = "```" + filetype + "\n" + file + "\n```";
 
