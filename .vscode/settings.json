@@ -1,0 +1,6 @@
+{
+  "material-icon-theme.folders.associations": {
+    "preact": "components",
+    "astro": "server"
+  }
+}
