@@ -13,6 +13,7 @@
     "@astrojs/preact": "^3.0.1",
     "@astrojs/react": "^3.0.3",
     "@astrojs/tailwind": "^5.0.1",
+    "@heroicons/react": "^2.0.18",
     "astro": "^3.2.3",
     "class-variance-authority": "^0.7.0",
     "preact": "^10.18.1",
