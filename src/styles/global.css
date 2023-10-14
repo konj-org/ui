@@ -31,11 +31,11 @@ html[data-modal-open="true"]
 
 pre,
 pre code {
-  @apply !bg-neutral-900;
+  @apply !bg-neutral-900 text-sm;
 }
 
 pre {
-  @apply rounded-3xl;
+  @apply !rounded-3xl p-8;
 }
 
 input[type="number"]::-webkit-inner-spin-button,
