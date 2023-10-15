@@ -2,11 +2,40 @@
 import type { HTMLAttributes } from "astro/types";
 interface Props extends HTMLAttributes<"body"> {}
 
+// SubComponents
 import Headers from "@/components/astro/headers.astro";
+import { DesktopNavbar, MobileNavbar } from "@/components/preact/custom/navbar";
+
+// Signals
+import { pathnameSignal } from "@/hooks/custom/use-pathname";
+import { PageLoadingIndicator } from "@/components/preact/custom/page-loading-indicator";
+
+pathnameSignal.value = Astro.url.pathname;
 ---
-<html data-color-scheme="dark" lang="en" dir="ltr">
+<html transition:animate="none" data-color-scheme="dark" lang="en" dir="ltr">
 	<Headers />
-	<body {...Astro.props}>
+	<body 
+		class={[
+			"mb-[8rem]",
+			"md:mt-[8rem]",
+			"md:mb-0"
+		].join(" ")} 
+		{...Astro.props}
+	>
+		<PageLoadingIndicator transition:persist  />
+		<DesktopNavbar transition:persist transition:name="navbar-desktop" client:load />
 		<slot />
+		<MobileNavbar transition:persist transition:name="navbar-mobile" client:load />
 	</body>
 </html>
+
+<script>
+	import { pathnameSignal } from "@/hooks/custom/use-pathname";
+
+	/** Update the pathname to new value after each navigation */
+	const updatePathname = () => {
+		pathnameSignal.value = window.location.pathname;
+	}
+
+	document.addEventListener('astro:after-swap', updatePathname);
+</script>
