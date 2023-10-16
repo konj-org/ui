@@ -1,0 +1,19 @@
+---
+import Codebox, { type CodeboxProps } from "@/components/preact/custom/codebox";
+import { Loading } from "@/components/preact/styled/loading";
+
+export interface Props extends CodeboxProps {};
+---
+
+<div 
+  data-codebox-wrapper 
+  data-visible="true"
+  class={[
+    "min-h-[70vh]",
+    "relative",
+    "[&[data-visible=false]_*[data-loading-indicator]]:!hidden",
+  ].join(" ")}
+>
+  <Loading data-loading-indicator className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-[51]" />
+  <Codebox {...Astro.props} client:only="preact" />
+</div>
