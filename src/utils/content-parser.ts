@@ -4,7 +4,7 @@ import { resolve } from "node:path";
 import { cwd } from "node:process";
 
 // Types
-import type { UIComponent, UILibraries } from "@/data/components";
+import type { UIComponent, UILibraries } from "@/data/types";
 
 // Marked
 import { Marked } from "marked";
@@ -45,9 +45,14 @@ interface ParseTSXProps {
   library: UILibraries;
 }
 
+export interface Code {
+  html: string;
+  raw: string;
+}
+
 /** Parses the given typescript file, supports booth typescript and tsx */
 export const parseTS = ({ type, library, model, filename }: ParseTSXProps) =>
-  new Promise<string | null>(async (res, rej) => {
+  new Promise<Code | null>(async (res, rej) => {
     try {
       const path = resolve(
         cwd(),
@@ -72,7 +77,7 @@ export const parseTS = ({ type, library, model, filename }: ParseTSXProps) =>
 
       const { html } = await __parse(wrappedFile);
 
-      res(html);
+      res({ html, raw: file });
     } catch (err) {
       console.error(err);
       rej(null);
