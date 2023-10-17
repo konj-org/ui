@@ -4,7 +4,7 @@ import type { UIHook } from "./types";
 const hooks = {
   "use-touch-dialog-drag": {
     key: "use-touch-dialog-drag",
-    title: "useTouchDialogDrag",
+    title: "use Touch Dialog Drag",
     description:
       "An internal Hook, used in modal components, with swiping capability.",
     filename: "use-touch-dialog-drag.ts",

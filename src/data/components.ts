@@ -86,7 +86,7 @@ const components = {
     filename: "default-components.tsx",
     internalDependencies: { react: [], preact: [] },
     supports: ["preact"],
-    reactType: "server",
+    reactType: undefined,
     category: "miscellaneous",
     model: "primitive",
   },

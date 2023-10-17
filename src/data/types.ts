@@ -19,7 +19,7 @@ export interface UIComponent {
   internalDependencies: { [library: string]: string[] };
   filename: string;
   category: UICategory;
-  reactType: "client" | "server";
+  reactType: "client" | "server" | undefined;
   model: "primitive" | "styled" | "custom";
   supports: UILibraries[];
 }

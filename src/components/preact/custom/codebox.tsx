@@ -4,7 +4,7 @@
 import { useEffect, useMemo, useRef } from "preact/compat";
 
 // Types
-import type { UIComponent } from "@/data/types";
+import type { UIComponent, UIHook } from "@/data/types";
 import type { Code } from "@/utils/content-parser";
 
 // Components
@@ -23,7 +23,7 @@ export interface CodeboxProps {
     solid?: Code | undefined;
   };
   itemType: "component" | "hook";
-  component?: UIComponent;
+  component?: UIComponent | UIHook;
 }
 
 const Codebox = ({ code, itemType, component }: CodeboxProps) => {
@@ -73,24 +73,26 @@ const Codebox = ({ code, itemType, component }: CodeboxProps) => {
       </div>
       <div class="bg-neutral-900 rounded-2xl overflow-hidden">
         <div class="flex border-b border-neutral-800">
-          <Button
-            className="transition-all rounded-none px-8 py-2"
-            variant={selectedLibrary === "react" ? "filled" : "ghost"}
-            disabled={code.react === undefined}
-            color="dark"
-            onClick={setLibrary.bind(null, "react")}
-          >
-            React
-          </Button>
-          <Button
-            className="transition-all rounded-none px-8 py-2"
-            variant={selectedLibrary === "preact" ? "filled" : "ghost"}
-            disabled={code.preact === undefined}
-            color="dark"
-            onClick={setLibrary.bind(null, "preact")}
-          >
-            Preact
-          </Button>
+          {code.react !== undefined && (
+            <Button
+              className="transition-all rounded-none px-8 py-2"
+              variant={selectedLibrary === "react" ? "filled" : "ghost"}
+              color="dark"
+              onClick={setLibrary.bind(null, "react")}
+            >
+              React
+            </Button>
+          )}
+          {code.preact !== undefined && (
+            <Button
+              className="transition-all rounded-none px-8 py-2"
+              variant={selectedLibrary === "preact" ? "filled" : "ghost"}
+              color="dark"
+              onClick={setLibrary.bind(null, "preact")}
+            >
+              Preact
+            </Button>
+          )}
         </div>
         <div>
           {code.react && selectedLibrary === "react" && (
@@ -109,13 +111,14 @@ const Codebox = ({ code, itemType, component }: CodeboxProps) => {
           )}
         </div>
       </div>
-      {selectedLibrary === "react" && component?.reactType === "client" && (
-        <p class="flex gap-3 bg-yellow-100 dark:bg-yellow-950/50 px-8 py-4 border border-yellow-300 dark:border-yellow-900 rounded-2xl leading-none">
-          <span>Incase of usage with Next.js v13, add the</span>
-          <span class="font-mono">use client;</span>
-          <span>directive at the start of the component.</span>
-        </p>
-      )}
+      {selectedLibrary === "react" &&
+        (component as UIComponent)?.reactType === "client" && (
+          <p class="flex gap-3 bg-yellow-100 dark:bg-yellow-950/50 px-8 py-4 border border-yellow-300 dark:border-yellow-900 rounded-2xl leading-none">
+            <span>Incase of usage with Next.js v13, add the</span>
+            <span class="font-mono">use client;</span>
+            <span>directive at the start of the component.</span>
+          </p>
+        )}
     </section>
   );
 };
