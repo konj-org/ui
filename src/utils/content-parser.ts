@@ -40,7 +40,7 @@ const __parse = async <T extends Object>(data: string) => {
 
 interface ParseTSXProps {
   filename: string;
-  model: UIComponent["model"];
+  model?: UIComponent["model"] | undefined;
   type: "component" | "hook";
   library: UILibraries;
 }
@@ -52,22 +52,19 @@ export interface Code {
 
 /** Parses the given typescript file, supports booth typescript and tsx */
 export const parseTS = ({ type, library, model, filename }: ParseTSXProps) =>
-  new Promise<Code | null>(async (res, rej) => {
+  new Promise<Code | undefined>(async (res, rej) => {
     try {
-      const path = resolve(
-        cwd(),
-        "src",
-        type + "s",
-        library as unknown as string,
-        model,
-        filename
-      );
+      const path = [cwd(), "src", type + "s", library as unknown as string];
 
+      if (model) path.push(model);
+      path.push(filename);
+
+      const resolvedPath = resolve(...path);
       const filetype = filename.slice(filename.indexOf(".") + 1);
 
-      if (!existsSync(path)) return res(null);
+      if (!existsSync(resolvedPath)) return res(undefined);
 
-      let file = readFileSync(path, "utf-8");
+      let file = readFileSync(resolvedPath, "utf-8");
 
       if (type === "component" && library === "preact") {
         file = file.replace("/** @jsxImportSource preact */", "").trimStart();
@@ -80,7 +77,7 @@ export const parseTS = ({ type, library, model, filename }: ParseTSXProps) =>
       res({ html, raw: file });
     } catch (err) {
       console.error(err);
-      rej(null);
+      rej(undefined);
     }
   });
 
