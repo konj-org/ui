@@ -1,0 +1,42 @@
+---
+import type { GetStaticPaths } from "astro";
+
+// Database
+import components from "@/data/components";
+
+// Utils
+import { parseTS } from "@/utils/content-parser";
+
+// SubComponents
+import ItemPage from "@/components/astro/item-page.astro";
+
+export const getStaticPaths = (() => 
+   Object.keys(components).map((key) => ({ params: { id: key } }))
+) satisfies GetStaticPaths;
+
+const { id } = Astro.params;
+const component = components[id as keyof typeof components];
+const { filename, model} = component;
+const itemType = "component";
+
+const [reactCode, preactCode] = await Promise.all([
+  await parseTS({
+    filename, library: "react", model, type: itemType
+  }),
+  await parseTS({
+    filename, library: "preact", model, type: itemType
+  })
+]);
+
+const code = {
+  preact: preactCode,
+  react: reactCode,
+  solid: undefined
+};
+---
+
+<ItemPage
+  code={code}
+  item={component}
+  itemType={itemType}
+/>
