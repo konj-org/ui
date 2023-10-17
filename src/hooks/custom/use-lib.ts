@@ -16,7 +16,6 @@ export const useLibrary: () => [UILibraries, (v: UILibraries) => void] = () => {
   useEffect(() => {
     if (typeof window === "undefined") return;
     const v = localStorage.getItem(localStorageKey);
-    console.log(v);
 
     if (
       v !== null &&

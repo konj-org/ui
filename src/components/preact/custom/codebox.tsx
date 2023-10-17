@@ -41,8 +41,6 @@ const Codebox = ({ code, itemType, component }: CodeboxProps) => {
     return "react";
   }, [library, code]);
 
-  console.log(library);
-
   // Notifies the dom from the component hydration
   useEffect(() => {
     const { current: section } = sectionRef;
