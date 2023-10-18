@@ -17,12 +17,12 @@ import type { DialogProps } from "@/components/react/primitive/dialog";
 // Hooks
 import { useTouchDialogDrag } from "@/hooks/react/use-touch-dialog-drag";
 
-export interface AnchoredSheetProps
+export interface AnchoredDialogProps
   extends Omit<DialogProps, "className" | "ref"> {
   title: string;
 }
 
-const anchoredSheetClassNames = cva(
+const anchoredDialogClassNames = cva(
   [
     "opacity-100",
     "motion-reduce:opacity-0",
@@ -86,14 +86,14 @@ const anchoredSheetClassNames = cva(
 /**
  * Anchored Sheets provide an elegant way to display information and actions
  */
-export const AnchoredSheet = ({
+export const AnchoredDialog = ({
   children,
   title,
   setState,
   slim = false,
   ...props
-}: AnchoredSheetProps &
-  VariantProps<typeof anchoredSheetClassNames>): JSX.Element => {
+}: AnchoredDialogProps &
+  VariantProps<typeof anchoredDialogClassNames>): JSX.Element => {
   const { ref, onTouchEnd, onTouchMove } = useTouchDialogDrag({
     onClose: setState?.bind(null, false),
   });
@@ -104,7 +104,7 @@ export const AnchoredSheet = ({
         ref={ref}
         onTouchEnd={onTouchEnd}
         onTouchMove={onTouchMove}
-        className={anchoredSheetClassNames({ slim })}
+        className={anchoredDialogClassNames({ slim })}
         transitionDuration={350}
         setState={setState}
         {...props}

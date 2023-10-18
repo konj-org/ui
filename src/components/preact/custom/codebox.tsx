@@ -111,7 +111,7 @@ const Codebox = ({ code, itemType, component }: CodeboxProps) => {
       </div>
       {selectedLibrary === "react" &&
         (component as UIComponent)?.reactType === "client" && (
-          <p class="flex gap-3 bg-yellow-100 dark:bg-yellow-950/50 px-8 py-4 border border-yellow-300 dark:border-yellow-900 rounded-2xl leading-none">
+          <p class="flex flex-col md:flex-row gap-1 md:gap-2 bg-yellow-100 dark:bg-yellow-950/50 px-8 py-4 leading-relaxed border border-yellow-300 dark:border-yellow-900 rounded-2xl">
             <span>Incase of usage with Next.js v13, add the</span>
             <span class="font-mono">use client;</span>
             <span>directive at the start of the component.</span>

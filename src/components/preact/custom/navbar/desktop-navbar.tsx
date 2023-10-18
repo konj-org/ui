@@ -47,12 +47,8 @@ export const DesktopNavbar = () => {
         clearTimeout(timeoutRefs.current);
       }
 
-      if (status === "about") {
-        setActiveItem(status);
-      } else {
-        setActiveItem(status);
-        setFilter(status);
-      }
+      setActiveItem(status);
+      setFilter(status);
     },
     [setActiveItem]
   );
@@ -128,13 +124,12 @@ export const DesktopNavbar = () => {
         ].join(" ")}
       >
         <ul class={["flex", "gap-2"].join(" ")}>
-          {links.map(({ title, to, expandable, action, key }) => (
+          {links.map(({ title, to, expandable, key }) => (
             <li class="list-none" key={key}>
               <a
                 onMouseEnter={
                   expandable ? onExpand.bind(null, expandable) : undefined
                 }
-                onClick={action}
                 class={[
                   "px-6",
                   "py-[.5rem]",

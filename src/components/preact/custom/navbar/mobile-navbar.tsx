@@ -10,7 +10,7 @@ import { useSignal } from "@preact/signals";
 import { SearchIcon } from "./icons";
 import { SearchBar } from "./search-bar";
 import { ResultCard } from "./result-card";
-import { AnchoredSheet } from "@/components/preact/styled/anchored-dialog";
+import { AnchoredDialog } from "@/components/preact/styled/anchored-dialog";
 
 // Hooks
 import { usePathname } from "@/hooks/custom/use-pathname";
@@ -31,7 +31,7 @@ export const MobileNavbar = () => {
 
   return (
     <Fragment>
-      <AnchoredSheet title="Search" state={modal} setState={setModal}>
+      <AnchoredDialog title="Search" state={modal} setState={setModal}>
         <SearchBar onSearch={search} searchParam={searchParam} />
         <div className="overflow-y-auto grow mt-2">
           {componentResults.value.length !== 0 && (
@@ -58,7 +58,7 @@ export const MobileNavbar = () => {
             </p>
           )}
         </div>
-      </AnchoredSheet>
+      </AnchoredDialog>
       <nav
         className={[
           "z-50",
@@ -79,7 +79,7 @@ export const MobileNavbar = () => {
         ].join(" ")}
       >
         <ul className={["block", "grid", "grid-cols-5", "gap-2"].join(" ")}>
-          {links.map(({ title, to, icon: Icon, action, key }) => (
+          {links.map(({ title, to, icon: Icon, key }) => (
             <li
               class={[
                 "list-none",
@@ -100,7 +100,6 @@ export const MobileNavbar = () => {
               <Icon className="w-5 h-5" />
               <a
                 className="text-[0.6rem] opacity-75"
-                onClick={action}
                 href={to}
                 data-active={to === pathname.value}
               >
