@@ -1,0 +1,31 @@
+{
+  "name": "Konj/UI",
+  "description": "Set of elegant react components with tailwind styling and responsive design.",
+  "lang": "en",
+  "dir": "ltr",
+  "orientation": "portrait",
+  "short_name": "KUI",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "theme_color": "#0a0a0a",
+  "background_color": "#0a0a0a",
+  "icons": [
+    {
+      "src": "/icons/icon-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "/icons/icon-1024x1024.png",
+      "type": "image/png",
+      "sizes": "1024x1024"
+    },
+    {
+      "src": "/icons/512-maskable.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
+    }
+  ]
+}
