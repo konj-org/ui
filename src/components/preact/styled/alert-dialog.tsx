@@ -44,6 +44,7 @@ const dialogClasses = cva([
 
 const buttonClasses = cva(
   [
+    "aspect-[5/1]",
     "whitespace-nowrap",
     "text-sm",
     "py-3",
@@ -90,7 +91,7 @@ export const AlertDialog = ({
       >
         <header className="py-6 flex flex-col justify-center align-middle items-center">
           <p className="mb-1 last:mb-0 text-md font-semibold">{title}</p>
-          <p className="text-xs opacity-60">{subtitle}</p>
+          {subtitle && <p className="text-xs opacity-60">{subtitle}</p>}
         </header>
         <div className="grid grid-cols-2">
           {accept && (

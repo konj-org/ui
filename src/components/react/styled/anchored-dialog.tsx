@@ -17,12 +17,12 @@ import type { DialogProps } from "@/components/react/primitive/dialog";
 // Hooks
 import { useTouchDialogDrag } from "@/hooks/react/use-touch-dialog-drag";
 
-export interface AnchoredSheetProps
+export interface AnchoredDialogProps
   extends Omit<DialogProps, "className" | "ref"> {
   title: string;
 }
 
-const anchoredSheetClassNames = cva(
+const anchoredDialogClassNames = cva(
   [
     "opacity-100",
     "motion-reduce:opacity-0",
@@ -86,14 +86,14 @@ const anchoredSheetClassNames = cva(
 /**
  * Anchored Sheets provide an elegant way to display information and actions
  */
-export const AnchoredSheet = ({
+export const AnchoredDialog = ({
   children,
   title,
   setState,
   slim = false,
   ...props
-}: AnchoredSheetProps &
-  VariantProps<typeof anchoredSheetClassNames>): JSX.Element => {
+}: AnchoredDialogProps &
+  VariantProps<typeof anchoredDialogClassNames>): JSX.Element => {
   const { ref, onTouchEnd, onTouchMove } = useTouchDialogDrag({
     onClose: setState?.bind(null, false),
   });
@@ -104,7 +104,7 @@ export const AnchoredSheet = ({
         ref={ref}
         onTouchEnd={onTouchEnd}
         onTouchMove={onTouchMove}
-        className={anchoredSheetClassNames({ slim })}
+        className={anchoredDialogClassNames({ slim })}
         transitionDuration={350}
         setState={setState}
         {...props}
@@ -148,12 +148,10 @@ export const AnchoredSheet = ({
               "max-h-[100%]",
               "w-[100%]",
               "overflow-hidden",
-              "md:grow",
-              "md:flex-col",
-              "md:flex",
-              "md:justify-start",
-              "md:align-center",
-              "md:items-center",
+              "grow",
+              "flex-col",
+              "flex",
+              "justify-start",
               "grow",
               "pb-[calc(1rem_+_env(safe-area-inset-bottom))]",
               "standalone:iphone-portrait:pb-0",

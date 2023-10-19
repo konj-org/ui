@@ -1,0 +1,85 @@
+---
+// Types
+import type { UIComponent, UIHook } from "@/data/types";
+import type { Code } from "@/utils/content-parser";
+
+// Astro SubComponents
+import Page from "@/components/astro/page.astro";
+import CodeboxWrapper from "@/components/astro/codebox-wrapper.astro";
+
+// Preact SubComponents
+import { Wrapper } from "@/components/preact/custom/wrapper";
+
+// Signals
+import { getDemo } from "@/utils/mapped-demos";
+
+// Props
+export interface Props {
+  itemType: 'component' | 'hook';
+  item: UIComponent | UIHook;
+  code: {
+    preact?: Code | undefined;
+    react?: Code | undefined;
+    solid?: Code | undefined;
+  }
+}
+const { item, code } = Astro.props;
+const { description, supports, title, key: itemKey } = item;
+
+// Demo
+const demos = await Astro.glob("../../demos/*.mdx");
+const Demo = await getDemo(itemKey, demos);
+
+const infoBox: { title: string, data: any }[] = [
+  { title: 'Supports', data: supports.join(", ") },
+]
+
+if ( item.hasOwnProperty('category') ) infoBox.push({ title: 'category', data: (item as UIComponent).category });
+if ( item.hasOwnProperty('reactType') && typeof (item as UIComponent)['reactType'] !== 'undefined' ) 
+  infoBox.push({ title: 'React architecture', data: (item as UIComponent).reactType });
+---
+
+<Page>
+  <style is:global>
+    @import url("highlight.js/styles/github-dark.css");
+  </style>
+  <main class="max-w-5xl mx-auto prose dark:prose-invert p-8 md:p-0 md:my-12 [&_section]:my-12">
+    <section>
+      <div class="flex justify-start items-center content-center gap-2">
+        <h1 class="capitalize text-4xl md:text-6xl mb-0">
+          { title }
+        </h1>
+      </div>
+      <p class="mt-4 opacity-80 font-light">
+        { description }
+      </p>
+    </section>
+    <section>
+      <ul class="pl-0 grid grid-cols-2 md:grid-cols-3 gap-8 border-t border-b border-neutral-200 dark:border-neutral-800 py-4 md:border-none">
+        {
+          infoBox.reverse().map(({ title, data }) => (
+            <li class="list-none block only:col-span-2 md:only:col-span-3 last:odd:col-span-2 md:last:odd:col-span-1">
+              <p class="my-0 text-xs opacity-80 leading-none text-center">{title}</p>
+              <p class="my-0 mt-1 text-center text-xl capitalize font-semibold">{data}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+    {
+      Demo && (
+        <section>
+          <h3 class="text-3xl">
+            Demo  
+          </h3>
+          <Demo components={{ Wrapper: Wrapper }} />
+        </section> 
+      )
+    }
+    <CodeboxWrapper
+      code={code} 
+      itemType={'component'}
+      component={item}
+    />
+  </main>
+</Page>

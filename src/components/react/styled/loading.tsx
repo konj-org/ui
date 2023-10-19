@@ -31,12 +31,9 @@ export const Loading = ({
     <svg
       {...props}
       className={twMerge(
-        [
-          "w-6",
-          "h-6",
-          "[&_path]:stroke-neutral-950",
-          "dark:[&_path]:stroke-neutral-50",
-        ].join(" "),
+        ["w-6", "h-6", "stroke-neutral-950", "dark:stroke-neutral-50"].join(
+          " "
+        ),
         className
       )}
       viewBox="0 0 24 24"

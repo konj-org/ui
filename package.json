@@ -10,12 +10,13 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/mdx": "^1.1.2",
     "@astrojs/preact": "^3.0.1",
     "@astrojs/react": "^3.0.3",
     "@astrojs/tailwind": "^5.0.1",
     "@heroicons/react": "^2.0.18",
     "@preact/signals": "^1.2.1",
-    "astro": "^3.2.3",
+    "astro": "^3.3.0",
     "class-variance-authority": "^0.7.0",
     "fuse.js": "^6.6.2",
     "preact": "^10.18.1",
