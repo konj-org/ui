@@ -57,7 +57,7 @@ const components = {
     title: "Stacking Cards",
     description:
       "Fully animated stackable cards. Designed for preserving space while keeping them accessible for the users.",
-    filename: "button.tsx",
+    filename: "stacking-cards.tsx",
     internalDependencies: { react: [], preact: [] },
     supports: ["preact", "react"],
     reactType: "client",

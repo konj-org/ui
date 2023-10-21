@@ -22,8 +22,12 @@ export interface Props {
     react?: Code | undefined;
     solid?: Code | undefined;
   }
+  demoCode?: {
+    preact?: Code | undefined;
+    react?: Code | undefined;
+  }
 }
-const { item, code } = Astro.props;
+const { item, code, demoCode } = Astro.props;
 const { description, supports, title, key: itemKey } = item;
 
 // Demo
@@ -69,10 +73,20 @@ if ( item.hasOwnProperty('reactType') && typeof (item as UIComponent)['reactType
     {
       Demo && (
         <section>
-          <h3 class="text-3xl">
+          <h2 class="text-3xl">
             Demo  
-          </h3>
+          </h2>
           <Demo components={{ Wrapper: Wrapper }} />
+          {
+            demoCode &&
+            <CodeboxWrapper
+              title="Demo code example"
+              minHeight="40vh"
+              code={demoCode} 
+              itemType={'component'}
+              component={item}
+            />
+          }
         </section> 
       )
     }

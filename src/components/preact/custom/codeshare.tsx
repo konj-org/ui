@@ -131,11 +131,13 @@ const Codeshare = ({ code, itemType, library }: Props) => {
         disabled={!possibleToShare.value}
         aria-label={"Share this " + itemType}
         onClick={share}
+        style="padding: 0.6rem !important;"
         className={buttonClassName({
           compiledVariant: "theme-ghost",
           color: "theme",
           variant: "ghost",
           square: true,
+          compact: true,
         })}
       >
         <ShareIcon className="w-4 h-4" />
@@ -143,11 +145,13 @@ const Codeshare = ({ code, itemType, library }: Props) => {
       <button
         onClick={copy}
         aria-label={"Copy source code of this " + itemType}
+        style="padding: 0.6rem !important;"
         className={buttonClassName({
           compiledVariant: "dark-filled",
           color: "dark",
           variant: "filled",
           square: true,
+          compact: true,
         })}
       >
         <ClipboardDocumentListIcon className="w-4 h-4" />

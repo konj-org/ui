@@ -24,9 +24,16 @@ export interface CodeboxProps {
   };
   itemType: "component" | "hook";
   component?: UIComponent | UIHook;
+  title?: string;
 }
 
-const Codebox = ({ code, itemType, component }: CodeboxProps) => {
+<h3 className="my-0 mb-2 md:mb-0 text-3xl mr-auto"></h3>;
+const Codebox = ({
+  code,
+  itemType,
+  component,
+  title = "Source Code",
+}: CodeboxProps) => {
   const [library, setLibrary] = useLibrary();
   const sectionRef = useRef<null | HTMLDivElement>(null);
 
@@ -66,7 +73,7 @@ const Codebox = ({ code, itemType, component }: CodeboxProps) => {
       ref={sectionRef}
     >
       <div className="py-4 md:h-[6rem] flex flex-col md:flex-row items-center justify-between md:items-center content-center">
-        <h3 className="my-0 mb-2 md:mb-0 text-3xl mr-auto">Source Code</h3>
+        <h3 className="my-0 mb-2 md:mb-0 text-3xl mr-auto">{title}</h3>
         <Codeshare code={code} itemType={itemType} library={selectedLibrary} />
       </div>
       <div class="bg-neutral-900 rounded-2xl overflow-hidden">

@@ -40,8 +40,8 @@ const __parse = async <T extends Object>(data: string) => {
 
 interface ParseTSXProps {
   filename: string;
-  model?: UIComponent["model"] | undefined;
-  type: "component" | "hook";
+  model?: UIComponent["model"] | undefined | string;
+  type: "component" | "hook" | "demo";
   library: UILibraries;
 }
 
@@ -66,7 +66,7 @@ export const parseTS = ({ type, library, model, filename }: ParseTSXProps) =>
 
       let file = readFileSync(resolvedPath, "utf-8");
 
-      if (type === "component" && library === "preact") {
+      if ((type === "component" || type === "demo") && library === "preact") {
         file = file.replace("/** @jsxImportSource preact */", "").trimStart();
       }
 
