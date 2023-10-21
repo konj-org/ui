@@ -52,7 +52,7 @@ export const StackingCardsDemo = () => {
           <div>
             <p className="my-0 font-semibold text-lg">{title}</p>
             <p className="my-0 font-extralight text-xs flex gap-1">
-              <span class="font-normal">{date}</span>
+              <span className="font-normal">{date}</span>
               <span>{timestamp}</span>
             </p>
           </div>
