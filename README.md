@@ -40,6 +40,7 @@ This project is inspired by the [shadcn/ui](https://github.com/shadcn/ui) and ma
 | Alert Dialog    | :heavy_check_mark: | :heavy_check_mark: |
 | Anchored Dialog | :heavy_check_mark: | :heavy_check_mark: |
 | Action Sheet    | :heavy_check_mark: | :heavy_check_mark: |
+| Floating Sheet  | :heavy_check_mark: | :heavy_check_mark: |
 | Stacking Cards  | :heavy_check_mark: | :heavy_check_mark: |
 
 ### Hooks

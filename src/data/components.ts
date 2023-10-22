@@ -45,6 +45,20 @@ const components = {
     category: "modal",
     model: "styled",
   },
+  "floating-sheet": {
+    key: "floating-sheet",
+    title: "Floating Sheet",
+    description: "Display small amount of text with related actions.",
+    filename: "floating-sheet.tsx",
+    internalDependencies: {
+      react: ["modal", "use-touch-dialog-drag"],
+      preact: ["modal", "use-touch-dialog-drag"],
+    },
+    supports: ["preact", "react"],
+    reactType: "client",
+    category: "modal",
+    model: "styled",
+  },
   button: {
     key: "button",
     title: "Button",
