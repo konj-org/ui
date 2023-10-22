@@ -43,6 +43,7 @@ This project is inspired by the [shadcn/ui](https://github.com/shadcn/ui) and ma
 | Floating Sheet    | :heavy_check_mark: | :heavy_check_mark: | Modal         |
 | Stacking Cards    | :heavy_check_mark: | :heavy_check_mark: | Display       |
 | Segmented Control | :heavy_check_mark: | :heavy_check_mark: | Display       |
+| Tab               | :heavy_check_mark: | :heavy_check_mark: | Display       |
 
 ### Hooks
 

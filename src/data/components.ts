@@ -109,6 +109,20 @@ const components = {
     category: "display",
     model: "styled",
   },
+  tab: {
+    key: "tab",
+    title: "Tab",
+    description: "Fully animated tab system.",
+    filename: "tab.tsx",
+    internalDependencies: {
+      react: ["segmented-control"],
+      preact: ["segmented-control", "default-components"],
+    },
+    supports: ["preact", "react"],
+    reactType: "client",
+    category: "display",
+    model: "styled",
+  },
   // ---------------------------------------- //
   // ----- Primitive Components ------------- //
   // ---------------------------------------- //
