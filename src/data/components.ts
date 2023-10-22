@@ -83,6 +83,20 @@ const components = {
     category: "miscellaneous",
     model: "styled",
   },
+  "segmented-control": {
+    key: "segmented-control",
+    title: "Segmented Control",
+    description: "Segmented buttons with animated with hover animation",
+    filename: "segmented-control.tsx",
+    internalDependencies: {
+      react: ["button"],
+      preact: ["button", "default-components"],
+    },
+    supports: ["preact", "react"],
+    reactType: "client",
+    category: "display",
+    model: "styled",
+  },
   "stacking-cards": {
     key: "stacking-cards",
     title: "Stacking Cards",

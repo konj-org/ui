@@ -33,15 +33,16 @@ This project is inspired by the [shadcn/ui](https://github.com/shadcn/ui) and ma
 
 ### Styled
 
-| Component       | React              | Preact             | Category      |
-| --------------- | ------------------ | ------------------ | ------------- |
-| Loading         | :heavy_check_mark: | :heavy_check_mark: | Miscellaneous |
-| Button          | :heavy_check_mark: | :heavy_check_mark: | Button        |
-| Alert Dialog    | :heavy_check_mark: | :heavy_check_mark: | Modal         |
-| Anchored Dialog | :heavy_check_mark: | :heavy_check_mark: | Modal         |
-| Action Sheet    | :heavy_check_mark: | :heavy_check_mark: | Modal         |
-| Floating Sheet  | :heavy_check_mark: | :heavy_check_mark: | Modal         |
-| Stacking Cards  | :heavy_check_mark: | :heavy_check_mark: | Display       |
+| Component         | React              | Preact             | Category      |
+| ----------------- | ------------------ | ------------------ | ------------- |
+| Loading           | :heavy_check_mark: | :heavy_check_mark: | Miscellaneous |
+| Button            | :heavy_check_mark: | :heavy_check_mark: | Button        |
+| Alert Dialog      | :heavy_check_mark: | :heavy_check_mark: | Modal         |
+| Anchored Dialog   | :heavy_check_mark: | :heavy_check_mark: | Modal         |
+| Action Sheet      | :heavy_check_mark: | :heavy_check_mark: | Modal         |
+| Floating Sheet    | :heavy_check_mark: | :heavy_check_mark: | Modal         |
+| Stacking Cards    | :heavy_check_mark: | :heavy_check_mark: | Display       |
+| Segmented Control | :heavy_check_mark: | :heavy_check_mark: | Display       |
 
 ### Hooks
 
