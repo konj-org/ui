@@ -50,3 +50,4 @@ This project is inspired by the [shadcn/ui](https://github.com/shadcn/ui) and ma
 | Component             | React              | Preact             |
 | --------------------- | ------------------ | ------------------ |
 | use-touch-dialog-drag | :heavy_check_mark: | :heavy_check_mark: |
+| use-popover           | :heavy_check_mark: | :heavy_check_mark: |

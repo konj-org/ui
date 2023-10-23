@@ -11,6 +11,14 @@ const hooks = {
     internalDependencies: { react: [], preact: [] },
     supports: ["preact", "react"],
   },
+  "use-popover": {
+    key: "use-popover",
+    title: "use Popover",
+    description: "A hook used with dropdown menu, to display and hide items.",
+    filename: "use-popover.ts",
+    internalDependencies: { react: [], preact: [] },
+    supports: ["preact", "react"],
+  },
 } satisfies { [key: string]: UIHook };
 
 export default hooks;
