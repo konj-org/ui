@@ -82,6 +82,20 @@ const components = {
     category: "input",
     model: "styled",
   },
+  select: {
+    key: "select",
+    title: "Select",
+    description: "Replacement for the browsers default 'select' input.",
+    filename: "select.tsx",
+    internalDependencies: {
+      react: ["modal", "use-popover"],
+      preact: ["modal", "use-popover"],
+    },
+    supports: ["preact", "react"],
+    reactType: "client",
+    category: "input",
+    model: "styled",
+  },
   loading: {
     key: "loading",
     title: "Loading",
