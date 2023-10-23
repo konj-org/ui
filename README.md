@@ -44,6 +44,7 @@ This project is inspired by the [shadcn/ui](https://github.com/shadcn/ui) and ma
 | Stacking Cards    | :heavy_check_mark: | :heavy_check_mark: | Display       |
 | Segmented Control | :heavy_check_mark: | :heavy_check_mark: | Display       |
 | Tab               | :heavy_check_mark: | :heavy_check_mark: | Display       |
+| Dropdown Menu     | :heavy_check_mark: | :heavy_check_mark: | Input         |
 
 ### Hooks
 

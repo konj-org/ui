@@ -71,6 +71,17 @@ const components = {
     category: "button",
     model: "styled",
   },
+  "dropdown-menu": {
+    key: "dropdown-menu",
+    title: "Dropdown Menu",
+    description: "Macos inspired dropdown menu.",
+    filename: "dropdown-menu.tsx",
+    internalDependencies: { react: ["modal"], preact: ["modal"] },
+    supports: ["preact", "react"],
+    reactType: "client",
+    category: "input",
+    model: "styled",
+  },
   loading: {
     key: "loading",
     title: "Loading",
