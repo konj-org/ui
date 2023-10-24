@@ -5,7 +5,7 @@ import containerQueries from "@tailwindcss/container-queries";
 /** @type {import('tailwindcss').Config} */
 const config = {
   darkMode: ["class", '[data-color-scheme="dark"]'],
-  content: ["./src/**/*.{html,astro,ts,tsx}"],
+  content: ["./src/**/*.{html,astro,ts,tsx,.mdx}"],
   theme: {
     transitionTimingFunction: {
       elastic: "cubic-bezier(0.68, 0, 0.32, 1.2)",
