@@ -96,6 +96,21 @@ const components = {
     category: "input",
     model: "styled",
   },
+  "file-input": {
+    key: "file-input",
+    title: "File input",
+    description:
+      "Elegant and easy to use file input, with drag and drop support.",
+    filename: "file-input.tsx",
+    internalDependencies: {
+      react: [],
+      preact: [],
+    },
+    supports: ["preact", "react"],
+    reactType: "client",
+    category: "input",
+    model: "styled",
+  },
   loading: {
     key: "loading",
     title: "Loading",
