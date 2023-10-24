@@ -246,8 +246,6 @@ export const FileInput = ({
   const [dragging, setDragging] = useState(false);
   const [selectedFile, setSelectedFile] = useState(0);
 
-  console.log(dragging);
-
   /** Manages the files passed to input element */
   const handleFiles = useCallback(
     (files: FileList | File[]) => {
