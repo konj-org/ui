@@ -1,0 +1,16 @@
+---
+import Page from "@/components/astro/page.astro";
+import { parseMarkdown } from "@/utils/content-parser";
+
+const { html } = await parseMarkdown("src", "docs", "setup.md");
+---
+
+<Page>
+  <style is:global>
+    @import url("highlight.js/styles/github-dark.css");
+  </style>
+  <main 
+    class="max-w-5xl mx-auto prose dark:prose-invert p-8 md:p-0 md:mb-12 [&_section]:my-12" 
+    set:html={html} 
+  />
+</Page>
