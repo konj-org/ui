@@ -1,6 +1,11 @@
 // Types
 export type UILibraries = "react" | "preact" | "solid";
-export type UICategory = "button" | "modal" | "miscellaneous" | "display";
+export type UICategory =
+  | "button"
+  | "modal"
+  | "miscellaneous"
+  | "display"
+  | "input";
 
 // Interfaces
 export interface UIHook {
