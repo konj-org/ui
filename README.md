@@ -54,3 +54,7 @@ This project is inspired by the [shadcn/ui](https://github.com/shadcn/ui) and ma
 | --------------------- | ------------------ | ------------------ |
 | use-touch-dialog-drag | :heavy_check_mark: | :heavy_check_mark: |
 | use-popover           | :heavy_check_mark: | :heavy_check_mark: |
+
+## License
+
+This project is licensed under [MIT](./LICENSE) license.
