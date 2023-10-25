@@ -97,13 +97,13 @@ export const MobileNavbar = () => {
               ].join(" ")}
               key={key}
             >
-              <Icon className="w-5 h-5" />
               <a
-                className="text-[0.6rem] opacity-75"
+                className="text-[0.6rem] h-full opacity-75 flex justify-between content-between items-center flex-col"
                 href={to}
                 data-active={to === pathname.value}
               >
-                {title}
+                <Icon className="w-5 h-5" />
+                <span>{title}</span>
               </a>
             </li>
           ))}
