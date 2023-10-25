@@ -20,9 +20,8 @@ pathnameSignal.value = Astro.url.pathname;
 	<Headers />
 	<body 
 		class={[
-			"pb-[8rem]",
+			"pt-12",
 			"md:pt-[8rem]",
-			"md:pb-0",
 			"overflow-x-hidden"
 		].join(" ")} 
 		{...Astro.props}
@@ -47,9 +46,9 @@ pathnameSignal.value = Astro.url.pathname;
 				"dark:shadow-none"
 			].join(" ")}
 		>
-			<div class="max-w-5xl mx-auto  flex flex-col md:flex-row gap-4 md:justify-between">
-				<p class="my-0">
-					Licensed under <a href="https://github.com/konj-org/ui#license">MIT</a> License
+			<div class="max-w-5xl pb-16 md:pb-0 mx-auto flex items-center gap-4 justify-between">
+				<p class="my-0 text-sm">
+					Licensed under <a href="https://github.com/konj-org/ui#license">MIT</a> License.
 				</p>
 				<Button className="ml-auto" square id="color-scheme-toggle">
 					<SunIcon className="w-4 h-4 hidden dark:block" />
@@ -64,7 +63,8 @@ pathnameSignal.value = Astro.url.pathname;
 	import { pathnameSignal } from "@/hooks/custom/use-pathname";
 
 	// Elements
-	const colorSchemeToggleButton = document.getElementById("color-scheme-toggle");
+	/** Returns the 'color-scheme-toggle' button. */
+	const getCST = () => document.getElementById("color-scheme-toggle");
 	
 	// Types
 	type ColorScheme = "dark" | "light";
@@ -105,11 +105,11 @@ pathnameSignal.value = Astro.url.pathname;
 
 		/** Settings color scheme */
 		hydrateColorScheme();
-		colorSchemeToggleButton?.addEventListener("click", setColorScheme.bind(null, undefined));
+		getCST()?.addEventListener("click", setColorScheme.bind(null, undefined));
 	}
 
 	document.addEventListener("astro:after-swap", afterSwap);
-	colorSchemeToggleButton?.addEventListener("click", setColorScheme.bind(null, undefined));
+	getCST()?.addEventListener("click", setColorScheme.bind(null, undefined));
 
 	hydrateColorScheme();
 </script>
