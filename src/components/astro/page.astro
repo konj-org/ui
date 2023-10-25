@@ -4,11 +4,8 @@ interface Props extends HTMLAttributes<"body"> {}
 
 // SubComponents
 import Headers from "@/components/astro/headers.astro";
+import Footer from "@/components/astro/footer.astro";
 import { DesktopNavbar, MobileNavbar } from "@/components/preact/custom/navbar";
-import { Button } from "@/components/preact/styled/button";
-
-// Icons
-import { MoonIcon, SunIcon } from "@heroicons/react/24/solid";
 
 // Signals
 import { pathnameSignal } from "@/hooks/custom/use-pathname";
@@ -30,86 +27,17 @@ pathnameSignal.value = Astro.url.pathname;
 		<DesktopNavbar transition:persist transition:name="navbar-desktop" client:load />
 		<slot />
 		<MobileNavbar transition:persist transition:name="navbar-mobile" client:load />
-		<footer 
-			class={[
-				"px-8",
-				"md:px-0",
-				"w-full",
-				"max-w-none",
-				"py-8",
-				"border-t",
-				"border-t-neutral-200",
-				"dark:border-neutral-800",
-				"prose",
-				"dark:prose-invert",
-				"shadow-[0_0_1rem_theme(colors.neutral.300/05)]",
-				"dark:shadow-none"
-			].join(" ")}
-		>
-			<div class="max-w-5xl pb-16 md:pb-0 mx-auto flex items-center gap-4 justify-between">
-				<p class="my-0 text-sm">
-					Licensed under <a href="https://github.com/konj-org/ui#license">MIT</a> License.
-				</p>
-				<Button className="ml-auto" square id="color-scheme-toggle">
-					<SunIcon className="w-4 h-4 hidden dark:block" />
-					<MoonIcon className="w-4 h-4 dark:hidden" />
-				</Button>
-			</div>
-		</footer>
+		<Footer />
 	</body>
 </html>
 
 <script>
 	import { pathnameSignal } from "@/hooks/custom/use-pathname";
 
-	// Elements
-	/** Returns the 'color-scheme-toggle' button. */
-	const getCST = () => document.getElementById("color-scheme-toggle");
-	
-	// Types
-	type ColorScheme = "dark" | "light";
-	
-	// Constants
-	const headerKey = "data-color-scheme";
-	const localStorageKey = "konj-ui-color-scheme";
-	const possibleColorSchemes: ColorScheme[] = [ "dark", "light" ];
-	
-	/** Hydrates the stored color scheme in local storage */
-	const hydrateColorScheme = () => {
-		const storedColorScheme = localStorage.getItem(localStorageKey) as null | "dark" | "light";
-
-		if ( possibleColorSchemes.includes(storedColorScheme as ColorScheme) ) {
-			setColorScheme(storedColorScheme!);
-		} else {
-			localStorage.removeItem(localStorageKey);
-		}
-	}
-
-	/** Sets the selected color scheme */
-	const setColorScheme = (selectedColorScheme?: ColorScheme) => {
-		const currentTheme = document.documentElement.getAttribute(headerKey) as ColorScheme;
-
-		// Finding the new ColorScheme
-		const colorScheme = selectedColorScheme ? selectedColorScheme! : currentTheme === "dark" ? "light" : "dark";
-
-		// Setting the value
-		document.documentElement.setAttribute(headerKey, colorScheme);
-		localStorage.setItem(localStorageKey, colorScheme);
-	}
-
 	const afterSwap = () => {
-		console.debug("Running 'after-swap' event");
-
 		/** Update the pathname to new value after each navigation */
 		pathnameSignal.value = window.location.pathname;
-
-		/** Settings color scheme */
-		hydrateColorScheme();
-		getCST()?.addEventListener("click", setColorScheme.bind(null, undefined));
 	}
 
 	document.addEventListener("astro:after-swap", afterSwap);
-	getCST()?.addEventListener("click", setColorScheme.bind(null, undefined));
-
-	hydrateColorScheme();
 </script>
