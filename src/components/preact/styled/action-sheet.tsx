@@ -39,7 +39,7 @@ const Group = ({ className = "", ...props }: ComponentProps<"div">) => {
   return (
     <div
       className={
-        "backdrop-blur-md md:backdrop-blur-none md:bg-transparent md:dark:bg-transparent flex w-[100%] md:gap-2 md:rounded-none grow flex-col items-center justify-center rounded-3xl overflow-hidden bg-neutral-200/50 text-center dark:bg-neutral-800/50 " +
+        "backdrop-blur-md md:backdrop-blur-none md:bg-transparent md:dark:bg-transparent flex w-[100%] md:gap-2 md:rounded-none grow flex-col items-center justify-center rounded-2xl overflow-hidden bg-neutral-200/50 text-center dark:bg-neutral-800/50 " +
         className
       }
       {...props}
@@ -49,11 +49,13 @@ const Group = ({ className = "", ...props }: ComponentProps<"div">) => {
 
 const ActionButton = ({
   className = "",
+  main = false,
   ...props
-}: ComponentProps<"button">) => {
+}: ComponentProps<"button"> & { main?: boolean }) => {
   return (
     <button
       {...props}
+      data-main={`${main}`}
       className={twMerge(
         [
           "capitalize",
@@ -81,6 +83,8 @@ const ActionButton = ({
           "md:hover:bg-neutral-300",
           "md:dark:hover:bg-neutral-600",
           "md:py-2",
+          "data-[main=true]:py-4",
+          "md:data-[main=true]:py-2",
         ].join(" "),
         className as string
       )}
@@ -175,8 +179,9 @@ export const ActionSheet = ({
         )}
       </Group>
       {mainAction && (
-        <Group data-draggable={true} className="mt-4">
+        <Group data-draggable={true} className="mt-2">
           <ActionButton
+            main
             data-draggable={true}
             className="font-semibold"
             onClick={() => {

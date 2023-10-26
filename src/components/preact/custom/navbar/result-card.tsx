@@ -1,8 +1,7 @@
 /** @jsxImportSource preact */
 
 // Types
-import type { UIComponent } from "@/data/components";
-import type { UIHook } from "@/data/hooks";
+import type { UIComponent, UIHook } from "@/data/types";
 import type { Signal } from "@preact/signals";
 
 interface ResultCardProps {
@@ -21,6 +20,7 @@ export const ResultCard = ({
   return (
     <div
       className={[
+        "px-1",
         "delay-75",
         "my-8",
         "first:mt-0",
