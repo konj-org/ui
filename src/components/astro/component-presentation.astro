@@ -1,0 +1,56 @@
+---
+import PresentationCard from "./presentation-card.astro";
+
+// Demo Components
+import { StackingCardsDemo } from "@/demos/preact/stacking-cards";
+import { TabDemo } from "@/demos/preact/tab";
+import { ActionSheetDemo } from "@/demos/preact/action-sheet";
+import { AnchoredDialogDemo } from "@/demos/preact/anchored-dialog";
+import { FloatingSheetDemo } from "@/demos/preact/floating-sheet";
+---
+
+<section>
+  <div>
+    <h2 class="mb-1 md:mb-4 text-4xl">
+      Components Showcase
+    </h2>
+    <p class="mt-1 md:mt-4">
+      Some of our best components
+    </p>
+  </div>
+  <div class="grid gap-8 md:grid-cols-3">
+    <PresentationCard 
+      title="Stacking Cards" 
+      className="md:col-span-2"
+      href="/components/stacking-cards"
+    >
+      <div>
+        <StackingCardsDemo client:visible />
+      </div>
+    </PresentationCard>
+    <PresentationCard 
+      title="Tab" 
+      href="/components/tab"
+    >
+      <TabDemo client:visible />
+    </PresentationCard>
+    <PresentationCard 
+      title="Action Sheet" 
+      href="/components/action-sheet"
+    >
+      <ActionSheetDemo client:visible />
+    </PresentationCard>
+    <PresentationCard 
+      title="Anchored Dialog" 
+      href="/components/anchored-dialog"
+    >
+      <AnchoredDialogDemo client:visible />
+    </PresentationCard>
+    <PresentationCard 
+      title="Floating Sheet" 
+      href="/components/floating-sheet"
+    >
+      <FloatingSheetDemo client:visible />
+    </PresentationCard>
+  </div>
+</section>
