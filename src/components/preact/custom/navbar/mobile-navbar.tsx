@@ -2,7 +2,7 @@
 
 // Preact
 import { Fragment } from "preact";
-import { useState } from "preact/hooks";
+import { useCallback, useState } from "preact/hooks";
 
 import { useSignal } from "@preact/signals";
 
@@ -29,6 +29,14 @@ export const MobileNavbar = () => {
   // Signals
   const searchParam = useSignal<string>("");
 
+  // Navigation proxy
+  const onNavigate = useCallback(() => {
+    document
+      .getElementById("page-loading-indicator")
+      ?.setAttribute("data-visible", "true");
+    setModal(false);
+  }, []);
+
   return (
     <Fragment>
       <AnchoredDialog title="Search" state={modal} setState={setModal}>
@@ -37,7 +45,7 @@ export const MobileNavbar = () => {
           {componentResults.value.length !== 0 && (
             <ResultCard
               baseHref="/components/"
-              onClick={setModal.bind(null, false)}
+              onClick={onNavigate}
               title="Components"
               items={componentResults}
             />
@@ -45,7 +53,7 @@ export const MobileNavbar = () => {
           {hooksResults.value.length !== 0 && (
             <ResultCard
               baseHref="/hooks/"
-              onClick={setModal.bind(null, false)}
+              onClick={onNavigate}
               title="Hooks"
               items={hooksResults}
             />
@@ -98,6 +106,7 @@ export const MobileNavbar = () => {
               key={key}
             >
               <a
+                onClick={onNavigate}
                 className="text-[0.6rem] h-full opacity-75 flex justify-between content-between items-center flex-col"
                 href={to}
                 data-active={to === pathname.value}

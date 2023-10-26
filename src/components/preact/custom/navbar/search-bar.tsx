@@ -23,7 +23,7 @@ export const SearchBar = ({
   );
 
   return (
-    <div>
+    <div className="px-1">
       <div className="text-lg font-semibold flex gap-4 items-start content-start px-6">
         <label className="mb-2 leading-none">Search</label>
       </div>

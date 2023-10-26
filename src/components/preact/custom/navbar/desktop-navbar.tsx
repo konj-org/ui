@@ -66,6 +66,15 @@ export const DesktopNavbar = () => {
     timeoutRefs.current !== null && clearTimeout(timeoutRefs.current);
   }, []);
 
+  // Navigation proxy
+  const onNavigate = useCallback(() => {
+    document
+      .getElementById("page-loading-indicator")
+      ?.setAttribute("data-visible", "true");
+
+    setActiveItem(undefined);
+  }, []);
+
   return (
     <Fragment>
       {/* Fades the content behind the navbar */}
@@ -147,6 +156,7 @@ export const DesktopNavbar = () => {
             {links.map(({ title, to, expandable, key }) => (
               <li class="list-none" key={key}>
                 <a
+                  onClick={onNavigate}
                   onMouseEnter={
                     expandable ? onExpand.bind(null, expandable) : undefined
                   }
@@ -185,7 +195,7 @@ export const DesktopNavbar = () => {
                 {componentResults.value.length !== 0 && (
                   <ResultCard
                     baseHref="/components/"
-                    onClick={setActiveItem.bind(null, undefined)}
+                    onClick={onNavigate}
                     title="Components"
                     items={componentResults}
                   />
@@ -193,7 +203,7 @@ export const DesktopNavbar = () => {
                 {hooksResults.value.length !== 0 && (
                   <ResultCard
                     baseHref="/hooks/"
-                    onClick={setActiveItem.bind(null, undefined)}
+                    onClick={onNavigate}
                     title="Hooks"
                     items={hooksResults}
                   />
