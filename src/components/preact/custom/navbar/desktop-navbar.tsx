@@ -138,7 +138,7 @@ export const DesktopNavbar = () => {
             {links.map(({ title, to, expandable, key }) => (
               <li class="list-none" key={key}>
                 <a
-                  onClick={onNavigate}
+                  onClick={to !== pathname.value ? onNavigate : undefined}
                   onMouseEnter={
                     expandable ? onExpand.bind(null, expandable) : undefined
                   }
