@@ -2,20 +2,54 @@
 // Astro Components
 import Page from "@/components/astro/page.astro";
 import ComponentPresentation from "@/components/astro/component-presentation.astro";
+import Hero from "@/components/astro/hero.astro";
 
 // Icons
 import IconLight from "@/../public/ICON-LIGHT.svg?raw";
+
+// Data
+const features = [
+	{
+		title: "SSR First Library",
+		description: "Almost every component supports SSR, therefore they can be used within NextJS / AstroJS projects."
+	},
+	{
+		title: "Fully Customizable",
+		description: "Since components are styled with TailwindCSS it's quite easy to edit them to your liking."
+	},
+	{
+		title: "Match made in Heaven, probably",
+		description: "Thanks to the combination of Typescript and TailwindCSS, it's absolutely easy to extend or modify the components."
+	}
+]
 ---
 <Page>
 	<main class="prose dark:prose-invert max-w-none pb-48">
-		<div class="flex z-10 text-black justify-center items-center content-center flex-col min-h-[70vh] md:min-h-[60vh] pb-[3rem] md:pb-32 bg-primary-300 [box-shadow:_0_-20vh_0_0_theme(colors.primary.300)]">
+		<Hero>
 			<div aria-label="Konj UI Logo" class="[&_svg]:w-48 [&_svg]:h-48" set:html={IconLight} />
 			<h1 aria-readonly class="mb-2 text-6xl text-inherit">Konj UI</h1>
 			<p class="text-xl mt-2">
 				The Next-Gen Component Library 
 			</p>
-		</div>
+		</Hero>
 		<div class="max-w-5xl mx-auto pt-0 p-8 md:p-0 md:pb-10">
+			<div class="mb-24">
+				<h2 class="mb-12 text-4xl">
+					Why Konj/UI?
+				</h2>
+				{
+					features.map(({ title, description }) => (
+						<section>
+							<h3 class="mb-1 mt-8 text-2xl">
+								{ title }
+							</h3>
+							<p class="mt-1 mb-8 text-sm md:text-base">
+								{ description }
+							</p>
+						</section>
+					))
+				}
+			</div>
 			<ComponentPresentation />
 		</div>
 	</main>
