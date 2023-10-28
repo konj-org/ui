@@ -1,0 +1,68 @@
+---
+// Types
+import type { UIComponent, UIHook } from '@/data/types';
+
+// Icons
+import { ArrowUpRightIcon } from '@heroicons/react/24/solid';
+
+interface Props {
+  items: { [v: string]: UIComponent | UIHook};
+  baseHref: string;
+}
+
+const { baseHref, items } = Astro.props;
+---
+
+<ul>
+  {
+    Object.values(items)
+      .sort((a, b) => a.title > b.title ? 1 : a.title < b.title ? -1 : 0)
+      .map(({ 
+        key,
+        title,
+        description
+      }) => (
+        <li>
+          <a 
+            href={baseHref + key}
+            class={[
+              "block",
+              "my-4",
+              "md:my-6",
+              "[&:hover_span]:text-primary-700",
+              "[&:hover_span]:decoration-primary-700",
+              "dark:[&:hover_span]:text-primary-300",
+              "dark:[&:hover_span]:decoration-primary-300",
+              "decoration-transparent",
+              "transition-colors"
+            ].join(" ")}
+          >
+            <span 
+              class={[
+                "underline",
+                "flex",
+                "decoration-inherit",
+                "md:text-lg",
+                "transition-colors",
+                "duration-100",
+                "gap-1",
+                "dark:text-neutral-50",
+                "font-light",
+                "text-neutral-950",
+                "items-center",
+                "justify-start"
+              ].join(" ")} 
+              
+            >
+              <span>{title}</span>
+              <ArrowUpRightIcon className="w-4 h-4" />
+            </span>
+            <p class="my-0 text-sm opacity-75">
+              {description}
+            </p>
+          </a>
+        </li>
+      )
+    )
+  }
+</ul>

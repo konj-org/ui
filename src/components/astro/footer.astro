@@ -12,7 +12,7 @@ const githubRepo = "https://github.com/konj-org/ui";
     "w-full",
     "max-w-none",
     "pt-8",
-		"pb-20",
+		"pb-[calc(theme(space.20)_+_env(safe-area-inset-bottom))]",
 		"md:pb-8",
     "border-t",
     "border-t-neutral-200",
@@ -53,6 +53,7 @@ const githubRepo = "https://github.com/konj-org/ui";
 			</li>
 		</ul>
 	</div>
+	<p class="text-center font-mono text-sm opacity-75 py-4">Powered by {Astro.generator}</p>
 </footer>
 
 <script>

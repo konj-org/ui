@@ -1,0 +1,22 @@
+---
+// Astro Components
+import Page from "@/components/astro/page.astro";
+import Hero from "@/components/astro/hero.astro";
+import ItemList from "@/components/astro/item-list.astro";
+
+// Data
+import components from "@/data/components";
+---
+<Page>
+	<main class="prose dark:prose-invert max-w-none pb-24">
+		<Hero>
+			<h1 aria-readonly class="mb-2 text-4xl text-inherit">Components</h1>
+		</Hero>
+		<div class="max-w-5xl mx-auto pt-0 p-8 md:p-0 md:pb-10">
+			<h2>
+        Component List
+      </h2>
+      <ItemList items={components} baseHref="/components/" />
+		</div>
+	</main>
+</Page>

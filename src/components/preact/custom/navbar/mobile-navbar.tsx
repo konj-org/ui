@@ -106,7 +106,7 @@ export const MobileNavbar = () => {
               key={key}
             >
               <a
-                onClick={onNavigate}
+                onClick={to !== pathname.value ? onNavigate : undefined}
                 className="text-[0.6rem] h-full opacity-75 flex justify-between content-between items-center flex-col"
                 href={to}
                 data-active={to === pathname.value}

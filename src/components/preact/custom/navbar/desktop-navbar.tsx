@@ -77,25 +77,7 @@ export const DesktopNavbar = () => {
 
   return (
     <Fragment>
-      {/* Fades the content behind the navbar */}
-      <div
-        aria-label="hidden"
-        className={[
-          "hidden",
-          "md:block",
-          "pointer-events-none",
-          "fixed",
-          "top-0",
-          "z-10",
-          "w-full",
-          "h-[5rem]",
-          "bg-gradient-to-b",
-          "from-10%",
-          "from-neutral-50",
-          "dark:from-neutral-950",
-          "to-transparent",
-        ].join(" ")}
-      />
+      <div className="hidden fixed h-[env(safe-area-inset-top)] z-20 w-full iphone-portrait:block top-0 left-0 bg-black/80 backdrop-blur-md" />
       <nav
         onPointerEnter={onPointerEnter}
         onPointerLeave={onMouseLeave}
@@ -156,7 +138,7 @@ export const DesktopNavbar = () => {
             {links.map(({ title, to, expandable, key }) => (
               <li class="list-none" key={key}>
                 <a
-                  onClick={onNavigate}
+                  onClick={to !== pathname.value ? onNavigate : undefined}
                   onMouseEnter={
                     expandable ? onExpand.bind(null, expandable) : undefined
                   }
