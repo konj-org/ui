@@ -4,10 +4,9 @@ import {
   DropdownGroup,
   DropdownItem,
   DropdownMenu,
-} from "@/components/react/styled/dropdown-menu";
-import { buttonClassName } from "@/components/react/styled/button";
-
-import { usePopover } from "@/hooks/react/use-popover";
+  buttonClassName,
+  usePopover,
+} from "@konj-org/react-ui";
 
 export const DropdownMenuDemo = () => {
   // States for the main

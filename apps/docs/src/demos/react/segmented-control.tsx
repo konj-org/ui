@@ -1,6 +1,6 @@
 import { useState } from "preact/hooks";
 
-import { SegmentedControl } from "@/components/react/styled/segmented-control";
+import { SegmentedControl } from "@konj-org/react-ui";
 
 const internalLinks = [
   {

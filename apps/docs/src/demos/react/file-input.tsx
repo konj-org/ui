@@ -1,4 +1,4 @@
-import { FileInput } from "@/components/react/styled/file-input";
+import { FileInput } from "@konj-org/react-ui";
 
 export const FileInputDemo = () => {
   return (

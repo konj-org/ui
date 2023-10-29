@@ -1,8 +1,7 @@
 import { useState } from "react";
 
 // SubComponents
-import { FloatingSheet } from "@/components/react/styled/floating-sheet";
-import { Button } from "@/components/react/styled/button";
+import { FloatingSheet, Button } from "@konj-org/react-ui";
 
 export const FloatingSheetDemo = () => {
   const [state, setState] = useState(false);

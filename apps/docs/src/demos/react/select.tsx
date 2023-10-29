@@ -1,4 +1,4 @@
-import { Select } from "@/components/react/styled/select";
+import { Select } from "@konj-org/react-ui";
 
 export const SelectDemo = () => {
   return (

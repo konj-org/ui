@@ -1,8 +1,7 @@
 import { useState } from "react";
 
 // SubComponents
-import { ActionSheet } from "@/components/react/styled/action-sheet";
-import { Button } from "@/components/react/styled/button";
+import { ActionSheet, Button } from "@konj-org/react-ui";
 
 export const ActionSheetDemo = () => {
   const [state, setState] = useState(false);

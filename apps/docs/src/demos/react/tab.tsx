@@ -1,4 +1,4 @@
-import { Tab, TabItem } from "@/components/react/styled/tab";
+import { Tab, TabItem } from "@konj-org/react-ui";
 
 export const TabDemo = () => {
   return (

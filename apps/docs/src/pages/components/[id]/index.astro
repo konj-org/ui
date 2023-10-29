@@ -21,7 +21,7 @@ const itemType = "component";
 
 const [reactCode, preactCode, reactDemoCode, preactDemoCode] = await Promise.all([
   await parseTS({
-    filename, library: "react", model, type: itemType
+    filename, library: "react", model, type: itemType, external: true
   }),
   await parseTS({
     filename, library: "preact", model, type: itemType, external: true

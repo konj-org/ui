@@ -1,8 +1,7 @@
 import { Fragment, useState } from "react";
 
 // SubComponents
-import { Button } from "@/components/react/styled/button";
-import { AnchoredDialog } from "@/components/react/styled/anchored-dialog";
+import { Button, AnchoredDialog } from "@konj-org/react-ui";
 
 export const AnchoredDialogDemo = () => {
   const [dialogState, setDialogState] = useState(false);

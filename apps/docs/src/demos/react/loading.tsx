@@ -1,4 +1,4 @@
-import { Loading } from "@/components/react/styled/loading";
+import { Loading } from "@konj-org/react-ui";
 
 export const LoadingDemo = () => {
   return <Loading />;

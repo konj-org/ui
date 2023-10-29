@@ -21,7 +21,7 @@ const itemType = "hook";
 
 const [reactCode, preactCode] = await Promise.all([
   await parseTS({
-    filename, library: "react", type: itemType
+    filename, library: "react", type: itemType, external: true
   }),
   await parseTS({
     filename, library: "preact", type: itemType, external: true

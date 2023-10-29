@@ -1,8 +1,7 @@
 import { Fragment, useState } from "react";
 
 // SubComponents
-import { Button } from "@/components/react/styled/button";
-import { AlertDialog } from "@/components/react/styled/alert-dialog";
+import { Button, AlertDialog } from "@konj-org/react-ui";
 
 export const AlertDialogDemo = () => {
   const [dialogState, setDialogState] = useState(false);

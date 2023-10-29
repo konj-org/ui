@@ -1,7 +1,4 @@
-import {
-  StackingCard,
-  StackingCards,
-} from "@/components/react/styled/stacking-cards";
+import { StackingCard, StackingCards } from "@konj-org/react-ui";
 
 const transactions = [
   {
