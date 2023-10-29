@@ -16,6 +16,7 @@
     "@astrojs/tailwind": "^5.0.1",
     "@heroicons/react": "^2.0.18",
     "@konj-org/preact-ui": "workspace:*",
+    "@konj-org/react-ui": "workspace:*",
     "@preact/signals": "^1.2.1",
     "astro": "^3.3.0",
     "class-variance-authority": "^0.7.0",
