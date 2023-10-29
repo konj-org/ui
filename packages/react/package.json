@@ -8,7 +8,7 @@
   "types": "dist/index.d.ts",
   "type": "module",
   "scripts": {
-    "esbuild-script": "npx esbuild src/index.ts --target=node20 --bundle --minify --tree-shaking=true --format=esm --external:class-variance-authority --external:tailwind-merge --external:react --external:react-dom --outdir=dist",
+    "esbuild-script": "npx esbuild src/index.ts --target=node20 --bundle --tree-shaking=true --format=esm --external:class-variance-authority --external:tailwind-merge --external:react --external:react-dom --outdir=dist",
     "esbuild-dev-script": "npx esbuild src/index.ts --target=node20 --bundle --format=esm --external:class-variance-authority --external:tailwind-merge --external:react --external:react-dom --outdir=dist --watch=forever",
     "build": "npx tsc && npm run esbuild-script",
     "dev": "npx tsc --watch & npm run esbuild-dev-script"
