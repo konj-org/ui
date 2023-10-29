@@ -5,7 +5,7 @@ on:
     types: [published]
 
 jobs:
-  build:
+  publish:
     runs-on: ubuntu-latest
 
     steps:
@@ -18,7 +18,7 @@ jobs:
           node-version: 20
 
       - name: Installing PNPM
-        run: npm install -g pnpm 
+        run: npm install -g pnpm
 
       - name: Installing Dependencies
         run: pnpm install --frozen-lockfile
@@ -27,14 +27,16 @@ jobs:
         run: pnpm run build --filter react-ui
 
       - name: Publishing react-ui
-        run: pnpm publish --filter react-ui --access public --no-git-checks
+        run: npm publish
+        working-directory: ./packages/react
         env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Building preact-ui
         run: pnpm run build --filter preact-ui
 
       - name: Publishing preact-ui
-        run: pnpm publish --filter preact-ui --access public --no-git-checks
+        run: npm publish
+        working-directory: ./packages/preact
         env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
