@@ -27,7 +27,7 @@ jobs:
         run: pnpm run build --filter react-ui
 
       - name: Publishing react-ui
-        run: pnpm publish --filter react-ui --access public
+        run: pnpm publish --filter react-ui --access public --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
@@ -35,6 +35,6 @@ jobs:
         run: pnpm run build --filter preact-ui
 
       - name: Publishing preact-ui
-        run: pnpm publish --filter preact-ui --access public
+        run: pnpm publish --filter preact-ui --access public --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
