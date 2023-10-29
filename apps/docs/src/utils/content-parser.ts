@@ -39,6 +39,7 @@ const __parse = async <T extends Object>(data: string) => {
 };
 
 interface ParseTSXProps {
+  external?: boolean;
   filename: string;
   model?: UIComponent["model"] | undefined | string;
   type: "component" | "hook" | "demo";
@@ -51,10 +52,28 @@ export interface Code {
 }
 
 /** Parses the given typescript file, supports booth typescript and tsx */
-export const parseTS = ({ type, library, model, filename }: ParseTSXProps) =>
+export const parseTS = ({
+  type,
+  library,
+  model,
+  filename,
+  external = false,
+}: ParseTSXProps) =>
   new Promise<Code | undefined>(async (res, rej) => {
     try {
-      const path = [cwd(), "src", type + "s", library as unknown as string];
+      const path = [
+        cwd(),
+        external
+          ? // Incase of external component we need to find it throw 'node_modules'
+            ["node_modules", "@konj-org", library + "-ui"]
+          : [],
+        "src",
+        type + "s",
+        external
+          ? // Incase of external item we skip the library as the directory
+            []
+          : [library],
+      ].flat();
 
       if (model) path.push(model);
       path.push(filename);
