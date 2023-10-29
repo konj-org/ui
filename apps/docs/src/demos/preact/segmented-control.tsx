@@ -2,7 +2,7 @@
 
 import { useState } from "preact/hooks";
 
-import { SegmentedControl } from "@/components/preact/styled/segmented-control";
+import { SegmentedControl } from "@konj-org/preact-ui";
 
 const internalLinks = [
   {

@@ -4,8 +4,7 @@ import { Fragment } from "preact";
 import { useState } from "preact/hooks";
 
 // SubComponents
-import { Button } from "@/components/preact/styled/button";
-import { AlertDialog } from "@/components/preact/styled/alert-dialog";
+import { Button, AlertDialog } from "@konj-org/preact-ui";
 
 export const AlertDialogDemo = () => {
   const [dialogState, setDialogState] = useState(false);

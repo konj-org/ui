@@ -4,8 +4,7 @@ import { Fragment } from "preact";
 import { useState } from "preact/hooks";
 
 // SubComponents
-import { Button } from "@/components/preact/styled/button";
-import { AnchoredDialog } from "@/components/preact/styled/anchored-dialog";
+import { Button, AnchoredDialog } from "@konj-org/preact-ui";
 
 export const AnchoredDialogDemo = () => {
   const [dialogState, setDialogState] = useState(false);

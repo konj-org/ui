@@ -10,7 +10,7 @@ import { useSignal } from "@preact/signals";
 import { SearchIcon } from "./icons";
 import { SearchBar } from "./search-bar";
 import { ResultCard } from "./result-card";
-import { AnchoredDialog } from "@/components/preact/styled/anchored-dialog";
+import { AnchoredDialog } from "@konj-org/preact-ui";
 
 // Hooks
 import { usePathname } from "@/hooks/custom/use-pathname";

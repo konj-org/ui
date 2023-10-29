@@ -1,6 +1,6 @@
 /** @jsxImportSource preact */
 
-import { Button } from "@/components/preact/styled/button";
+import { Button } from "@konj-org/preact-ui";
 
 export const ButtonDemo = () => {
   return <Button>Button Component</Button>;

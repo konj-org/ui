@@ -24,7 +24,7 @@ const [reactCode, preactCode, reactDemoCode, preactDemoCode] = await Promise.all
     filename, library: "react", model, type: itemType
   }),
   await parseTS({
-    filename, library: "preact", model, type: itemType
+    filename, library: "preact", model, type: itemType, external: true
   }),
   await parseTS({
     filename, library: "react", type: 'demo'

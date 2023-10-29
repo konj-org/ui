@@ -1,9 +1,6 @@
 /** @jsxImportSource preact */
 
-import {
-  StackingCard,
-  StackingCards,
-} from "@/components/preact/styled/stacking-cards";
+import { StackingCard, StackingCards } from "@konj-org/preact-ui";
 
 const transactions = [
   {

@@ -24,7 +24,7 @@ const [reactCode, preactCode] = await Promise.all([
     filename, library: "react", type: itemType
   }),
   await parseTS({
-    filename, library: "preact", type: itemType
+    filename, library: "preact", type: itemType, external: true
   })
 ]);
 

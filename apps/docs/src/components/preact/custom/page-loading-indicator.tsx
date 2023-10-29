@@ -1,6 +1,6 @@
 /** @jsxImportSource preact */
 
-import { Loading } from "@/components/preact/styled/loading";
+import { Loading } from "@konj-org/preact-ui";
 
 export const PageLoadingIndicator = () => {
   return (

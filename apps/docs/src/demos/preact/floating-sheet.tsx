@@ -3,8 +3,7 @@
 import { useState } from "preact/hooks";
 
 // SubComponents
-import { FloatingSheet } from "@/components/preact/styled/floating-sheet";
-import { Button } from "@/components/preact/styled/button";
+import { FloatingSheet, Button } from "@konj-org/preact-ui";
 
 export const FloatingSheetDemo = () => {
   const [state, setState] = useState(false);

@@ -3,8 +3,7 @@
 import { useState } from "preact/hooks";
 
 // SubComponents
-import { ActionSheet } from "@/components/preact/styled/action-sheet";
-import { Button } from "@/components/preact/styled/button";
+import { ActionSheet, Button } from "@konj-org/preact-ui";
 
 export const ActionSheetDemo = () => {
   const [state, setState] = useState(false);

@@ -1,6 +1,6 @@
 /** @jsxImportSource preact */
 
-import { Tab, TabItem } from "@/components/preact/styled/tab";
+import { Tab, TabItem } from "@konj-org/preact-ui";
 
 export const TabDemo = () => {
   return (

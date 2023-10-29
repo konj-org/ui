@@ -1,6 +1,6 @@
 /** @jsxImportSource preact */
 
-import { FileInput } from "@/components/preact/styled/file-input";
+import { FileInput } from "@konj-org/preact-ui";
 
 export const FileInputDemo = () => {
   return (

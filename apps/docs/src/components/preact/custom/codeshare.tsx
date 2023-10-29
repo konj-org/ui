@@ -12,7 +12,7 @@ import type { CodeboxProps } from "./codebox";
 import type { UILibraries } from "@/data/types";
 
 // Classes
-import { buttonClassName } from "@/components/preact/styled/button";
+import { buttonClassName } from "@konj-org/preact-ui";
 
 // ---------------------- //
 // --- Icons ------------ //

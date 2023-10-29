@@ -1,6 +1,6 @@
 /** @jsxImportSource preact */
 
-import { Select } from "@/components/preact/styled/select";
+import { Select } from "@konj-org/preact-ui";
 
 export const SelectDemo = () => {
   return (

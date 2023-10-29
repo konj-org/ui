@@ -8,7 +8,7 @@ import type { UIComponent, UIHook } from "@/data/types";
 import type { Code } from "@/utils/content-parser";
 
 // Components
-import { Button } from "@/components/preact/styled/button";
+import { Button } from "@konj-org/preact-ui";
 
 // Hooks
 import { useLibrary } from "@/hooks/custom/use-lib";

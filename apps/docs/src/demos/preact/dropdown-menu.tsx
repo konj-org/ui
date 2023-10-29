@@ -7,10 +7,9 @@ import {
   DropdownGroup,
   DropdownItem,
   DropdownMenu,
-} from "@/components/preact/styled/dropdown-menu";
-import { buttonClassName } from "@/components/preact/styled/button";
-
-import { usePopover } from "@/hooks/preact/use-popover";
+  buttonClassName,
+  usePopover,
+} from "@konj-org/preact-ui";
 
 export const DropdownMenuDemo = () => {
   // States for the main
