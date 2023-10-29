@@ -1,0 +1,37 @@
+name: NPM Release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checking out the repository
+        uses: actions/checkout@v3
+
+      - name: Setting up NodeJS and NPM
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Installing Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Building react-ui
+        run: pnpm run build --filter react-ui
+
+      - name: Publishing react-ui
+        run: pnpm publish --filter react-ui --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Building preact-ui
+        run: pnpm run build --filter preact-ui
+
+      - name: Publishing preact-ui
+        run: pnpm publish --filter preact-ui --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
