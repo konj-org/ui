@@ -7,9 +7,9 @@ import {
 } from "react";
 
 // Dialog
-import type { DialogProps } from "@/components/react/primitive/dialog";
+import type { DialogProps } from "@/components/primitive/dialog";
 const Dialog = lazy(() =>
-  import("@/components/react/primitive/dialog").then((module) => ({
+  import("@/components/primitive/dialog").then((module) => ({
     default: module.Dialog,
   }))
 );

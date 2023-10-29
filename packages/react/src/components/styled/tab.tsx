@@ -15,7 +15,7 @@ import {
 import {
   SegmentedControl,
   type SegmentedControlProps,
-} from "@/components/react/styled/segmented-control";
+} from "@/components/styled/segmented-control";
 
 /* ------ Internal ------ */
 

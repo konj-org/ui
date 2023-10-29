@@ -16,7 +16,7 @@ import { cva } from "class-variance-authority";
 import { twMerge } from "tailwind-merge";
 
 // Sub Components
-import { Loading } from "@/components/react/styled/loading";
+import { Loading } from "@/components/styled/loading";
 
 const borderColor = "border-[var(--border-color)]";
 

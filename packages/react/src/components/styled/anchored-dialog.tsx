@@ -5,17 +5,17 @@ import { type VariantProps, cva } from "class-variance-authority";
 
 // Sub-Component
 const Dialog = lazy(() =>
-  import("@/components/react/primitive/dialog").then((module) => ({
+  import("@/components/primitive/dialog").then((module) => ({
     default: module.Dialog,
   }))
 );
-import { Button } from "@/components/react/styled/button";
+import { Button } from "@/components/styled/button";
 
 // Types
-import type { DialogProps } from "@/components/react/primitive/dialog";
+import type { DialogProps } from "@/components/primitive/dialog";
 
 // Hooks
-import { useTouchDialogDrag } from "@/hooks/react/use-touch-dialog-drag";
+import { useTouchDialogDrag } from "@/hooks/use-touch-dialog-drag";
 
 export interface AnchoredDialogProps
   extends Omit<DialogProps, "className" | "ref"> {

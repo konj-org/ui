@@ -10,7 +10,7 @@ import {
 } from "react";
 
 // SubComponents
-import { Button, type ButtonProps } from "@/components/react/styled/button";
+import { Button, type ButtonProps } from "@/components/styled/button";
 
 // Third Party Utils
 import { twMerge } from "tailwind-merge";

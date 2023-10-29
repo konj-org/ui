@@ -3,13 +3,13 @@ import { lazy, Suspense, type ComponentProps } from "react";
 // SubComponent
 import { Button } from "./button";
 const Dialog = lazy(() =>
-  import("@/components/react/primitive/dialog").then((module) => ({
+  import("@/components/primitive/dialog").then((module) => ({
     default: module.Dialog,
   }))
 );
 
 // Types
-import type { DialogProps } from "@/components/react/primitive/dialog";
+import type { DialogProps } from "@/components/primitive/dialog";
 
 // Icon
 /**
@@ -45,7 +45,7 @@ const XMarkIcon = ({
 import { cva } from "class-variance-authority";
 
 // Hooks
-import { useTouchDialogDrag } from "@/hooks/react/use-touch-dialog-drag";
+import { useTouchDialogDrag } from "@/hooks/use-touch-dialog-drag";
 
 const floatingSheetClassNames = cva([
   "flex-col",

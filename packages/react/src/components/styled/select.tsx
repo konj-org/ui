@@ -11,7 +11,7 @@ import {
 
 // Dialog
 const Dialog = lazy(() =>
-  import("@/components/react/primitive/dialog").then((module) => ({
+  import("@/components/primitive/dialog").then((module) => ({
     default: module.Dialog,
   }))
 );
@@ -50,7 +50,7 @@ const ChevronDownIcon = ({
 import { cva } from "class-variance-authority";
 
 // Hooks
-import { usePopover } from "@/hooks/react/use-popover";
+import { usePopover } from "@/hooks/use-popover";
 
 const popoverClasses = cva([
   "left-[var(--left,_auto)]",
