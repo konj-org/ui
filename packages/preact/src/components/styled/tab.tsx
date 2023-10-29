@@ -1,6 +1,9 @@
-/** @jsxImportSource preact */
-
-import { type ComponentProps, createElement, type ComponentType } from "preact";
+import {
+  type ComponentProps,
+  type JSX,
+  type ComponentType,
+  createElement,
+} from "preact";
 import {
   useCallback,
   useEffect,
@@ -11,14 +14,11 @@ import {
 import { Children } from "preact/compat";
 
 // Sub-Components
-import {
-  DButton,
-  DDiv,
-} from "@/components/preact/primitive/default-components";
+import { DButton, DDiv } from "@/components/primitive/default-components";
 import {
   SegmentedControl,
   type SegmentedControlProps,
-} from "@/components/preact/styled/segmented-control";
+} from "@/components/styled/segmented-control";
 
 /* ------ Internal ------ */
 

@@ -1,5 +1,3 @@
-/** @jsxImportSource preact */
-
 // Types
 import type { ComponentProps, VNode, JSX } from "preact";
 

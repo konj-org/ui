@@ -1,5 +1,3 @@
-/** @jsxImportSource preact */
-
 import type { ComponentProps, JSX } from "preact";
 import type { ChangeEventHandler } from "preact/compat";
 

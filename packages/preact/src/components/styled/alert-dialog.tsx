@@ -1,10 +1,9 @@
-/** @jsxImportSource preact */
-
 // Sub-Component
-import { Dialog } from "@/components/preact/primitive/dialog";
+import { Dialog } from "@/components/primitive/dialog";
 
 // Types
-import type { DialogProps } from "@/components/preact/primitive/dialog";
+import type { DialogProps } from "@/components/primitive/dialog";
+import type { JSX } from "preact";
 
 // CVA
 import { cva } from "class-variance-authority";

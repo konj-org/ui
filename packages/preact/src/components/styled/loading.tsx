@@ -1,5 +1,3 @@
-/** @jsxImportSource preact */
-
 import type { ComponentProps } from "preact";
 import { twMerge } from "tailwind-merge";
 

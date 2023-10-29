@@ -1,13 +1,13 @@
-/** @jsxImportSource preact */
+import type { JSX } from "preact";
 
 import { createElement } from "preact";
 import { useCallback, useRef } from "preact/hooks";
 
 // SubComponents
-import { Button, type ButtonProps } from "@/components/preact/styled/button";
+import { Button, type ButtonProps } from "@/components/styled/button";
 
 // Types
-import type { DButton } from "@/components/preact/primitive/default-components";
+import type { DButton } from "@/components/primitive/default-components";
 import type { ComponentProps, ComponentType } from "preact";
 
 // Third Party Utils

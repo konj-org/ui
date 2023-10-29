@@ -1,5 +1,3 @@
-/** @jsxImportSource preact */
-
 import {
   type ComponentChildren,
   type ComponentProps,
@@ -19,8 +17,8 @@ import { cva } from "class-variance-authority";
 import { twMerge } from "tailwind-merge";
 
 // Sub Components
-import { Loading } from "@/components/preact/styled/loading";
-import { DButton } from "@/components/preact/primitive/default-components";
+import { Loading } from "@/components/styled/loading";
+import { DButton } from "@/components/primitive/default-components";
 
 const borderColor = "border-[var(--border-color)]";
 

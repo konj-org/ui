@@ -1,5 +1,3 @@
-/** @jsxImportSource preact */
-
 import { type ComponentProps, createElement } from "preact";
 
 export const DButton = (props: Omit<ComponentProps<"button">, "class">) =>

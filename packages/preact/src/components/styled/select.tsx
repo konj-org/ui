@@ -1,12 +1,10 @@
-/** @jsxImportSource preact */
-
 // Types
-import type { ComponentProps } from "preact";
+import type { ComponentProps, JSX } from "preact";
 
 import { useCallback, useEffect, useRef, useState } from "preact/hooks";
 
 // Dialog
-import { Dialog } from "@/components/preact/primitive/dialog";
+import { Dialog } from "@/components/primitive/dialog";
 
 // Icons
 /**
@@ -42,7 +40,7 @@ const ChevronDownIcon = ({
 import { cva } from "class-variance-authority";
 
 // Hooks
-import { usePopover } from "@/hooks/preact/use-popover";
+import { usePopover } from "@/hooks/use-popover";
 
 const popoverClasses = cva([
   "left-[var(--left,_auto)]",

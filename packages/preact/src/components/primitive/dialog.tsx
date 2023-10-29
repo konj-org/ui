@@ -1,5 +1,3 @@
-/** @jsxImportSource preact */
-
 // Types
 import type { StateUpdater } from "preact/hooks";
 import type { ComponentProps } from "preact";

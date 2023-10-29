@@ -1,10 +1,9 @@
-/** @jsxImportSource preact */
-
+import type { JSX } from "preact";
 import { forwardRef, type ForwardedRef } from "preact/compat";
 
 // Dialog
-import type { DialogProps } from "@/components/preact/primitive/dialog";
-import { Dialog } from "@/components/preact/primitive/dialog";
+import type { DialogProps } from "@/components/primitive/dialog";
+import { Dialog } from "@/components/primitive/dialog";
 
 // CVA
 import { cva } from "class-variance-authority";

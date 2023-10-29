@@ -1,6 +1,4 @@
-/** @jsxImportSource preact */
-
-import type { ComponentProps } from "preact";
+import type { ComponentProps, JSX } from "preact";
 
 // CVA
 import { cva } from "class-variance-authority";
@@ -9,13 +7,13 @@ import { cva } from "class-variance-authority";
 import { twMerge } from "tailwind-merge";
 
 // SubComponents
-import { Dialog } from "@/components/preact/primitive/dialog";
+import { Dialog } from "@/components/primitive/dialog";
 
 // Hooks
-import { useTouchDialogDrag } from "@/hooks/preact/use-touch-dialog-drag";
+import { useTouchDialogDrag } from "@/hooks/use-touch-dialog-drag";
 
 // Types
-import type { DialogProps } from "@/components/preact/primitive/dialog";
+import type { DialogProps } from "@/components/primitive/dialog";
 
 interface Action {
   title: string;

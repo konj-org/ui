@@ -1,19 +1,17 @@
-/** @jsxImportSource preact */
-
 import type { JSX } from "preact/compat";
 
 // CVA
 import { type VariantProps, cva } from "class-variance-authority";
 
 // Sub-Component
-import { Button } from "@/components/preact/styled/button";
-import { Dialog } from "@/components/preact/primitive/dialog";
+import { Button } from "@/components/styled/button";
+import { Dialog } from "@/components/primitive/dialog";
 
 // Types
 import type { DialogProps } from "../primitive/dialog";
 
 // Hooks
-import { useTouchDialogDrag } from "@/hooks/preact/use-touch-dialog-drag";
+import { useTouchDialogDrag } from "@/hooks/use-touch-dialog-drag";
 
 export interface AnchoredDialogProps
   extends Omit<DialogProps, "className" | "ref"> {
