@@ -1,22 +1,49 @@
 # Setup Guide
 
-## Automatic ( NPM Package )
+### Installing packages
 
-Coming Soon
+Install [react-ui](https://www.npmjs.com/package/@konj-org/react-ui) / [preact-ui](https://www.npmjs.com/package/@konj-org/preact-ui) using your preferred package manager.
 
-## Manual
+#### NPM
 
-### Step 0 - TailwindCSS Setup
+```bash
+# React Components
+npm i @konj-org/react-ui
 
-Follow the official [TailwindCSS](https://github.com/tailwindlabs/tailwindcss) guide for your framework of choice, then modify the `tailwind.config.js` to mimic the following configuration. Keep in mind you also have to install the `container-queries` plugin.
+# Preact Components
+npm i @konj-org/preact-ui
+```
+
+#### PNPM
+
+```bash
+# React Components
+pnpm add @konj-org/react-ui
+
+# Preact Components
+pnpm add @konj-org/preact-ui
+```
+
+### Setup TailwindCSS
+
+Follow the official [TailwindCSS](https://github.com/tailwindlabs/tailwindcss) guide for your framework of choice, then modify the `tailwind.config.js` to mimic the following configuration.
 
 ```js
 // tailwind.config.js
+import colors from "tailwindcss/colors";
 import containerQueries from "@tailwindcss/container-queries";
 
 /** @type {import('tailwindcss').Config} */
 const config = {
   // ... //
+  content: [
+    // ... //
+    // Incase your using preact-ui //
+    "node_modules/@konj-org/preact-ui/**/*.tsx",
+    // Incase your using react-ui //
+    "node_modules/@konj-org/react-ui/**/*.tsx",
+    // ... //
+  ],
   theme: {
     transitionTimingFunction: {
       elastic: "cubic-bezier(0.68, 0, 0.32, 1.2)",
@@ -66,9 +93,10 @@ const config = {
       },
       animation: {
         "fade-in": "opacity-keyframes .5s ease-in-out forwards",
-        loading: "loading-keyframes steps(4) infinite",
+        loading: "loading-keyframes infinite",
       },
       colors: {
+        // You can modify the primary color to your linking
         primary: colors.green,
       },
       screens: {
@@ -96,7 +124,7 @@ const config = {
 export default config;
 ```
 
-### Step 1 - Adding Global styling
+### Adding Global styling
 
 Add the following CSS snippet to your global CSS file.
 
@@ -143,23 +171,14 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 ```
 
-### Step 2 - Installing additional dependencies
+### Troubleshooting
 
-You can avoid installing additional packages by modifying the component codes, but it's advised to use them since they add an array of functionalities. The required packages are listed below:
+Incase you're using an old version of npm, you might have to install peer dependencies manually. The peer dependencies include the following packages:
 
 - [class-variance-authority](https://github.com/joe-bell/cva): Adds multiple styling state support single components.
 - [tailwind-merge](https://github.com/dcastil/tailwind-merge): Adds class name merging support.
-
-Install them by running the following command:
-
-#### PNPM - Recommended
+- [@tailwindcss/container-queries](https://github.com/tailwindlabs/tailwindcss-container-queries): Providing container quires support for TailwindCSS.
 
 ```bash
-pnpm add class-variance-authority tailwind-merge
-```
-
-#### NPM
-
-```bash
-npm install class-variance-authority tailwind-merge
+npm install @tailwindcss/container-queries class-variance-authority tailwind-merge
 ```
