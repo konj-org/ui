@@ -87,7 +87,7 @@ export const MobileNavbar = () => {
         ].join(" ")}
       >
         <ul className={["block", "grid", "grid-cols-5", "gap-2"].join(" ")}>
-          {links.map(({ title, to, icon: Icon, key }) => (
+          {links.map(({ title, to, icon: Icon, key, external }) => (
             <li
               class={[
                 "list-none",
@@ -106,7 +106,11 @@ export const MobileNavbar = () => {
               key={key}
             >
               <a
-                onClick={to !== pathname.value ? onNavigate : undefined}
+                target={external ? "_blank" : undefined}
+                rel={external ? "noreferrer" : undefined}
+                onClick={
+                  to !== pathname.value && !external ? onNavigate : undefined
+                }
                 className="text-[0.6rem] h-full opacity-75 flex justify-between content-between items-center flex-col"
                 href={to}
                 data-active={to === pathname.value}

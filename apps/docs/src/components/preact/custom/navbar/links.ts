@@ -4,7 +4,7 @@
 import type { ComponentType } from "preact";
 
 // SubComponents
-import { AboutIcon, ComponentsIcon, HooksIcon, SetupIcon } from "./icons";
+import { GithubIcon, ComponentsIcon, HooksIcon, SetupIcon } from "./icons";
 
 export type NavbarActiveStates = "components" | "hooks";
 
@@ -14,6 +14,7 @@ export interface InternalLink {
   to: string | undefined;
   expandable: NavbarActiveStates | undefined;
   icon: ComponentType<any>;
+  external: boolean;
 }
 
 export const links: InternalLink[] = [
@@ -23,6 +24,7 @@ export const links: InternalLink[] = [
     to: "/setup",
     expandable: undefined,
     icon: SetupIcon,
+    external: false,
   },
   {
     key: "components",
@@ -30,6 +32,7 @@ export const links: InternalLink[] = [
     to: "/components",
     expandable: "components",
     icon: ComponentsIcon,
+    external: false,
   },
   {
     key: "hooks",
@@ -37,12 +40,14 @@ export const links: InternalLink[] = [
     to: "/hooks",
     expandable: "hooks",
     icon: HooksIcon,
+    external: false,
   },
   {
-    key: "about",
-    title: "About",
-    to: "/about",
+    key: "github",
+    title: "Github",
+    to: "https://github.com/konj-org/ui",
     expandable: undefined,
-    icon: AboutIcon,
+    icon: GithubIcon,
+    external: true,
   },
 ];
