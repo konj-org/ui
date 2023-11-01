@@ -1,3 +1,5 @@
+![gh-banner](./assets/gh-banner.jpg)
+
 # Konj UI
 
 Collection of elegant components
