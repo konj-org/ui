@@ -16,7 +16,8 @@ This project is inspired by the [shadcn/ui](https://github.com/shadcn/ui) and ma
 
 ### Frameworks
 
-- NextJS
+- [NextJS \*](./examples/next)
+  > **Notice**, Keep in mind at this point there is no built-in support for server components. You can copy and paste the components code inside your project, as a temporary solution.
 - Astro
 
 ### Libraries
