@@ -22,7 +22,7 @@ This project is inspired by the [shadcn/ui](https://github.com/shadcn/ui) and ma
 
 ### Libraries
 
-- ReactJS
+- [ReactJS + Vite](./examples/vite-react)
 - PreactJS
 
 ## Component List
