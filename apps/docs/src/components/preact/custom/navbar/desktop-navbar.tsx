@@ -135,33 +135,46 @@ export const DesktopNavbar = () => {
           ].join(" ")}
         >
           <ul class={["flex", "gap-2"].join(" ")}>
-            {links.map(({ title, to, expandable, key }) => (
-              <li class="list-none" key={key}>
-                <a
-                  onClick={to !== pathname.value ? onNavigate : undefined}
-                  onMouseEnter={
-                    expandable ? onExpand.bind(null, expandable) : undefined
-                  }
-                  class={[
-                    "px-6",
-                    "py-[.5rem]",
-                    "transition-colors",
-                    "rounded-3xl",
-                    "hover:bg-neutral-700",
-                    "duration-200",
-                    "data-[active=true]:text-primary-300",
-                    "hover:data-[active=true]:bg-neutral-700",
-                    "ease-[ease-in-out]",
-                    "select-none",
-                    "cursor-pointer",
-                  ].join(" ")}
-                  href={to}
-                  data-active={to === pathname.value}
-                >
-                  {title}
-                </a>
-              </li>
-            ))}
+            {links.map(
+              ({ title, to, expandable, key, external, icon: Icon }) => (
+                <li class="list-none" key={key}>
+                  <a
+                    target={external ? "_blank" : undefined}
+                    rel={external ? "noreferrer" : undefined}
+                    onClick={
+                      to !== pathname.value && !external
+                        ? onNavigate
+                        : undefined
+                    }
+                    onMouseEnter={
+                      expandable ? onExpand.bind(null, expandable) : undefined
+                    }
+                    class={[
+                      "px-6",
+                      "py-[.5rem]",
+                      "transition-colors",
+                      "rounded-3xl",
+                      "hover:bg-neutral-700",
+                      "duration-200",
+                      "data-[active=true]:text-primary-300",
+                      "hover:data-[active=true]:bg-neutral-700",
+                      "ease-[ease-in-out]",
+                      "select-none",
+                      "cursor-pointer",
+                      "flex",
+                      "gap-2",
+                      "items-center",
+                      "justify-center",
+                    ].join(" ")}
+                    href={to}
+                    data-active={to === pathname.value}
+                  >
+                    <Icon className="w-4 h-4" />
+                    <span>{title}</span>
+                  </a>
+                </li>
+              )
+            )}
           </ul>
         </div>
         <div class="flex-grow w-full max-w-[min(50%,_theme(maxWidth.3xl))] overflow-hidden mx-auto relative grid grid-rows-[5rem,1fr] py-4">
