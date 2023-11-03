@@ -12,18 +12,18 @@ This project is inspired by the [shadcn/ui](https://github.com/shadcn/ui) and ma
 - [CVA by @joe-bell](https://github.com/joe-bell/cva)
 - [Tailwind Merge by @dcastil](https://github.com/dcastil/tailwind-merge)
 
-## Supported frameworks/Libraries
+## Supported Frameworks / Libraries
 
 ### Frameworks
 
 - [NextJS \*](./examples/next)
   > **Notice**, Keep in mind at this point there is no built-in support for server components. You can copy and paste the components code inside your project, as a temporary solution.
-- Astro
+- [Astro](./apps/docs)
 
 ### Libraries
 
 - [ReactJS + Vite](./examples/vite-react)
-- PreactJS
+- [PreactJS + Vite](./examples/vite-preact)
 
 ## Component List
 
